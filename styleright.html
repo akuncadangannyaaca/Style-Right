@@ -1,0 +1,2449 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Style Right - SMAN MOJOAGUNG</title>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4da3ff 0%, #1e90ff 100%);
+            min-height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(30, 60, 114, 0.05) 0%, transparent 70%);
+            animation: rotate 25s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            width: 90px;
+            height: 90px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .title-group {
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #1e3c72;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: titlePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .school-name {
+            color: #2a5298;
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 5px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 2px;
+        }
+
+        .badge-container {
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e3c72 0%, #7e22ce 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 5px;
+            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .help-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #1e3c72 0%, #7e22ce 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.4);
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .help-button:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 6px 20px rgba(30, 60, 114, 0.6);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 35px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80%;
+            overflow-y: auto;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #1e3c72;
+        }
+
+        .modal-header h2 {
+            color: #1e3c72;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            font-size: 32px;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #1e3c72;
+            transform: rotate(90deg);
+        }
+
+        .help-section {
+            margin-bottom: 25px;
+        }
+
+        .help-section h3 {
+            color: #1e3c72;
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .help-section p, .help-section li {
+            color: #555;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .help-section ul {
+            padding-left: 25px;
+        }
+
+        .help-section li {
+            margin-bottom: 8px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 16px;
+            background: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #1e3c72 0%, #7e22ce 100%);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.4);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #1e3c72;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(30, 60, 114, 0.1);
+        }
+
+        .form-group input:disabled {
+            background: #e9ecef;
+            cursor: not-allowed;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .checkbox-item:hover {
+            background: #e9ecef;
+            border-color: #1e3c72;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #1e3c72;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #1e3c72 0%, #7e22ce 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(30, 60, 114, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(30, 60, 114, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #1e3c72 0%, #7e22ce 100%);
+            padding: 28px;
+            border-radius: 18px;
+            color: white;
+            box-shadow: 0 6px 20px rgba(30, 60, 114, 0.4);
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .stat-card:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .stat-card:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .stat-card h3 {
+            font-size: 14px;
+            margin-bottom: 12px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-card .number {
+            font-size: 42px;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .filter-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .filter-section select {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 14px;
+            background: #f8f9fa;
+        }
+
+        .record-item {
+            background: #f8f9fa;
+            padding: 22px;
+            border-radius: 14px;
+            margin-bottom: 15px;
+            border-left: 5px solid #1e3c72;
+            transition: all 0.3s ease;
+        }
+
+        .record-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .record-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .record-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+
+        .record-date {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .record-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .record-detail {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .record-detail strong {
+            color: #1e3c72;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .pelanggaran-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .pelanggaran-tag {
+            background: linear-gradient(135deg, #1e3c72 0%, #7e22ce 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .rekap-item {
+            background: white;
+            padding: 22px;
+            border-radius: 14px;
+            margin-bottom: 15px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .rekap-item:hover {
+            border-color: #1e3c72;
+            box-shadow: 0 6px 20px rgba(30, 60, 114, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .rekap-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .rekap-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+
+        .rekap-count {
+            background: linear-gradient(135deg, #1e3c72 0%, #7e22ce 100%);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .rekap-kelas {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px 28px;
+            border-radius: 14px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+            z-index: 1000;
+            display: none;
+            animation: slideIn 0.3s ease;
+            min-width: 300px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast.success {
+            border-left: 5px solid #10b981;
+        }
+
+        .toast.error {
+            border-left: 5px solid #ef4444;
+        }
+
+        .toast-message {
+            color: #333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+
+        .empty-state svg {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .floating-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #1e3c72 0%, #7e22ce 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            box-shadow: 0 6px 20px rgba(30, 60, 114, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .admin-login {
+            max-width: 450px;
+            margin: 50px auto;
+        }
+
+        .admin-login input {
+            margin-bottom: 20px;
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 12px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .admin-tab-btn.active {
+            background: linear-gradient(135deg, #1e3c72 0%, #7e22ce 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .admin-tab-content {
+            display: none;
+        }
+
+        .admin-tab-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .school-name {
+                font-size: 20px;
+            }
+
+            .logo {
+                width: 70px;
+                height: 70px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-section {
+                flex-direction: column;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container">
+   <header class="header"><button class="help-button" onclick="openHelp()">?</button>
+    <div class="logo-container">
+     <svg class="logo" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><!-- Shield outline --> <path d="M50 5 L90 20 L90 45 Q90 75 50 95 Q10 75 10 45 L10 20 Z" fill="#1e3c72" stroke="#7e22ce" stroke-width="2" /> <!-- Inner shield --> <path d="M50 15 L80 27 L80 45 Q80 68 50 85 Q20 68 20 45 L20 27 Z" fill="white" opacity="0.9" /> <!-- Star --> <path d="M50 30 L53 40 L63 40 L55 47 L58 57 L50 50 L42 57 L45 47 L37 40 L47 40 Z" fill="#1e3c72" /> <!-- Laurel left --> <path d="M35 50 Q30 55 30 60 Q30 58 32 56 Q34 54 35 50" stroke="#7e22ce" stroke-width="2" fill="none" /> <path d="M33 53 Q28 58 28 63 Q28 61 30 59 Q32 57 33 53" stroke="#7e22ce" stroke-width="2" fill="none" /> <!-- Laurel right --> <path d="M65 50 Q70 55 70 60 Q70 58 68 56 Q66 54 65 50" stroke="#7e22ce" stroke-width="2" fill="none" /> <path d="M67 53 Q72 58 72 63 Q72 61 70 59 Q68 57 67 53" stroke="#7e22ce" stroke-width="2" fill="none" /> <!-- Book --> <rect x="42" y="62" width="16" height="12" fill="#1e3c72" rx="1" /> <line x1="50" y1="62" x2="50" y2="74" stroke="white" stroke-width="1" /> <line x1="42" y1="65" x2="58" y2="65" stroke="white" stroke-width="0.5" /> <line x1="42" y1="68" x2="58" y2="68" stroke="white" stroke-width="0.5" /> <line x1="42" y1="71" x2="58" y2="71" stroke="white" stroke-width="0.5" />
+     </svg>
+     <div class="title-group">
+      <h1 id="judul-sistem">STYLE RIGHT</h1>
+      <div class="school-name" id="nama-sekolah">
+       SMAN MOJOAGUNG
+      </div>
+     </div>
+    </div>
+    <div class="badge-container"><span class="badge" id="tahun-ajaran">2025/2026</span>
+    </div>
+    <div class="subtitle" id="subtitle">
+     Sistem Data Kedisiplinan Siswa
+    </div>
+   </header>
+   <div class="tabs"><button class="tab-btn active" onclick="switchTab('input')">📝 Input Data</button> <button class="tab-btn" onclick="switchTab('admin')">🔐 Admin</button>
+   </div><!-- Input Tab -->
+   <div id="input-tab" class="tab-content active">
+    <div class="card">
+     <h2 style="margin-bottom: 25px; color: #1e3c72; font-weight: 700;">Form Pencatatan Pelanggaran</h2>
+     <form id="input-form">
+      <div class="form-group"><label for="nis">NIS Siswa <span style="color: red;">*</span></label> <input type="text" id="nis" required placeholder="Ketik NIS siswa" autocomplete="off">
+       <div id="nis-suggestions" style="display: none; background: white; border: 2px solid #1e3c72; border-radius: 8px; margin-top: 5px; max-height: 200px; overflow-y: auto;"></div>
+      </div>
+      <div class="form-group"><label for="nama">Nama Siswa</label> <input type="text" id="nama" disabled placeholder="Otomatis terisi">
+      </div>
+      <div class="form-group"><label for="kelas-display">Kelas</label> <input type="text" id="kelas-display" disabled placeholder="Otomatis terisi"> <input type="hidden" id="kelas">
+      </div>
+      <div class="form-group"><label>Jenis Pelanggaran <span style="color: red;">*</span></label>
+       <div class="checkbox-group">
+        <div class="checkbox-item"><input type="checkbox" id="pel1" value="Bet/badge tidak lengkap"> <label for="pel1">🎖️ Bet/badge tidak lengkap</label>
+        </div>
+        <div class="checkbox-item"><input type="checkbox" id="pel2" value="Tidak menggunakan dasi"> <label for="pel2">   Tidak menggunakan dasi</label>
+        </div>
+        <div class="checkbox-item"><input type="checkbox" id="pel3" value="Kaos kaki tidak sesuai hari"> <label for="pel3">🧦 Kaos kaki tidak sesuai hari</label>
+        </div>
+        <div class="checkbox-item"><input type="checkbox" id="pel4" value="Tidak menggunakan sabuk sekolah"> <label for="pel4">📏 Tidak menggunakan sabuk sekolah</label>
+        </div>
+        <div class="checkbox-item"><input type="checkbox" id="pel5" value="Sepatu tidak hitam"> <label for="pel5">👞 Sepatu tidak hitam</label>
+        </div>
+        <div class="checkbox-item"><input type="checkbox" id="pel6" value="Menggunakan flatshoes"> <label for="pel6">🥿 Menggunakan flatshoes</label>
+        </div>
+        <div class="checkbox-item"><input type="checkbox" id="pel7" value="Tidak menggunakan handuk"> <label for="pel7">🧴 Tidak menggunakan handuk</label>
+        </div>
+        <div class="checkbox-item"><input type="checkbox" id="pel8" value="Rambut berwarna"> <label for="pel8">🎨 Rambut berwarna</label>
+        </div>
+        <div class="checkbox-item"><input type="checkbox" id="pel9" value="Rambut panjang pada laki-laki"> <label for="pel9">✂️ Rambut panjang pada laki-laki</label>
+        </div>
+        <div class="checkbox-item"><input type="checkbox" id="pel10" value="Make up berlebihan"> <label for="pel10">     Make up berlebihan</label>
+        </div>
+        <div class="checkbox-item"><input type="checkbox" id="pel11" value="Menggunakan kutek"> <label for="pel11">💅 Menggunakan kutek</label>
+        </div>
+        <div class="checkbox-item"><input type="checkbox" id="pel12" value="Kuku panjang"> <label for="pel12">✋ Kuku panjang</label>
+        </div>
+       </div>
+      </div><button type="submit" class="btn" id="submit-btn"> 💾 Simpan Data </button>
+     </form>
+    </div>
+   </div><!-- Admin Tab -->
+   <div id="admin-tab" class="tab-content">
+    <div class="card admin-login" id="admin-login-card">
+     <h2 style="margin-bottom: 25px; color: #1e3c72; font-weight: 700; text-align: center;">Login Admin</h2>
+     <form id="admin-login-form">
+      <div class="form-group"><label for="admin-password">Password Admin</label> <input type="password" id="admin-password" required placeholder="Masukkan password">
+      </div><button type="submit" class="btn">🔓 Masuk</button>
+     </form>
+    </div>
+    <div class="card" id="admin-content" style="display: none;">
+     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+      <h2 style="color: #1e3c72; font-weight: 700;">Panel Admin</h2><button class="btn" onclick="logoutAdmin()" style="width: auto; padding: 12px 24px; font-size: 14px;">    Keluar </button>
+     </div>
+     <div class="admin-tabs"><button class="admin-tab-btn active" onclick="switchAdminTab('rekap-kelas')">📊 Rekap Per Kelas</button> <button class="admin-tab-btn" onclick="switchAdminTab('rekap-nama')">👤 Rekap Per Nama</button>
+     </div><!-- Rekap Per Kelas (Admin) -->
+     <div id="admin-rekap-kelas-content" class="admin-tab-content active">
+      <h3 style="color: #1e3c72; margin-bottom: 20px; font-weight: 600;">Rekap Per Siswa (1 Bulan Terakhir)</h3>
+      <div class="filter-section"><select id="rekap-filter-kelas" onchange="updateRekap()"> <option value="">Semua Kelas</option> <optgroup label="Kelas X"> <option value="X-1">X-1</option> <option value="X-2">X-2</option> <option value="X-3">X-3</option> <option value="X-4">X-4</option> <option value="X-5">X-5</option> <option value="X-6">X-6</option> <option value="X-7">X-7</option> <option value="X-8">X-8</option> <option value="X-9">X-9</option> <option value="X-10">X-10</option> </optgroup> <optgroup label="Kelas XI"> <option value="XI-1">XI-1</option> <option value="XI-2">XI-2</option> <option value="XI-3">XI-3</option> <option value="XI-4">XI-4</option> <option value="XI-5">XI-5</option> <option value="XI-6">XI-6</option> <option value="XI-7">XI-7</option> <option value="XI-8">XI-8</option> <option value="XI-9">XI-9</option> </optgroup> <optgroup label="Kelas XII"> <option value="XII-1">XII-1</option> <option value="XII-2">XII-2</option> <option value="XII-3">XII-3</option> <option value="XII-4">XII-4</option> <option value="XII-5">XII-5</option> <option value="XII-6">XII-6</option> <option value="XII-7">XII-7</option> <option value="XII-8">XII-8</option> <option value="XII-9">XII-9</option> </optgroup> </select>
+      </div>
+      <div id="rekap-list"></div>
+     </div><!-- Rekap Per Nama (Admin) -->
+     <div id="admin-rekap-nama-content" class="admin-tab-content">
+      <h3 style="color: #1e3c72; margin-bottom: 20px; font-weight: 600;">Rekap Detail Per Nama Siswa</h3>
+      <div class="filter-section"><input type="text" id="admin-search" placeholder="Cari nama siswa..." style="flex: 2; padding: 12px; border: 2px solid #e0e0e0; border-radius: 12px; font-size: 14px;" oninput="updateAdminRekap()"> <select id="admin-filter-kelas" onchange="updateAdminRekap()"> <option value="">Semua Kelas</option> <optgroup label="Kelas X"> <option value="X-1">X-1</option> <option value="X-2">X-2</option> <option value="X-3">X-3</option> <option value="X-4">X-4</option> <option value="X-5">X-5</option> <option value="X-6">X-6</option> <option value="X-7">X-7</option> <option value="X-8">X-8</option> <option value="X-9">X-9</option> <option value="X-10">X-10</option> </optgroup> <optgroup label="Kelas XI"> <option value="XI-1">XI-1</option> <option value="XI-2">XI-2</option> <option value="XI-3">XI-3</option> <option value="XI-4">XI-4</option> <option value="XI-5">XI-5</option> <option value="XI-6">XI-6</option> <option value="XI-7">XI-7</option> <option value="XI-8">XI-8</option> <option value="XI-9">XI-9</option> </optgroup> <optgroup label="Kelas XII"> <option value="XII-1">XII-1</option> <option value="XII-2">XII-2</option> <option value="XII-3">XII-3</option> <option value="XII-4">XII-4</option> <option value="XII-5">XII-5</option> <option value="XII-6">XII-6</option> <option value="XII-7">XII-7</option> <option value="XII-8">XII-8</option> <option value="XII-9">XII-9</option> </optgroup> </select>
+      </div>
+      <div id="admin-rekap-list"></div>
+     </div>
+    </div>
+   </div>
+  </div><!-- Help Modal -->
+  <div id="help-modal" class="modal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2>📖 Petunjuk Penggunaan</h2><button class="close-btn" onclick="closeHelp()">×</button>
+    </div>
+    <div class="help-section">
+     <h3>ℹ️ Tentang Sistem</h3>
+     <p>Style Right adalah sistem pencatatan digital untuk monitoring kedisiplinan siswa SMAN Mojoagung. Sistem ini memudahkan guru piket dan tim kesiswaan dalam mencatat pelanggaran atribut dan keterlambatan siswa.</p>
+    </div>
+    <div class="help-section">
+     <h3>📝 Cara Input Data</h3>
+     <ul>
+      <li>Pilih tab <strong>"Input Data"</strong></li>
+      <li>Ketik NIS siswa - nama dan kelas akan muncul otomatis</li>
+      <li>Centang jenis pelanggaran yang dilakukan siswa</li>
+      <li>Klik tombol <strong>"Simpan Data"</strong> dan selesai</li>
+     </ul>
+    </div>
+    <div class="help-section">
+     <h3>         Melihat Daftar Catatan</h3>
+     <ul>
+      <li>Pilih tab <strong>"Daftar Catatan"</strong></li>
+      <li>Lihat statistik total catatan, bulan ini, dan hari ini</li>
+      <li>Filter berdasarkan kelas untuk melihat data spesifik</li>
+      <li>Catatan ditampilkan dari yang terbaru</li>
+     </ul>
+    </div>
+    <div class="help-section">
+     <h3>🔐 Halaman Admin</h3>
+     <ul>
+      <li>Akses khusus administrator</li>
+      <li><strong>Rekap Per Kelas:</strong> Lihat ringkasan pelanggaran per siswa dalam 1 bulan terakhir</li>
+      <li><strong>Rekap Per Nama:</strong> Lihat detail lengkap per siswa dengan fitur pencarian</li>
+      <li>Gunakan filter kelas untuk mempermudah analisis data</li>
+     </ul>
+    </div>
+    <div class="help-section">
+     <h3>💡 Tips Penggunaan</h3>
+     <ul>
+      <li>Pastikan NIS siswa diinput dengan benar</li>
+      <li>Centang semua pelanggaran yang dilakukan siswa</li>
+      <li>Data tersimpan otomatis ke Canva Sheet</li>
+      <li>Gunakan filter untuk mempermudah pencarian data</li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="floating-icon" onclick="scrollToTop()">
+     
+  </div>
+  <div id="toast" class="toast">
+   <div class="toast-message"></div>
+  </div>
+  <script>
+        // Data siswa SMAN Mojoagung
+        const dataSiswa = {
+            // Kelas X-1
+            "8590": { nama: "ADITYA RADIDO MASCHERANO", kelas: "X-1" },
+            "8591": { nama: "ADIYAKSA RIZQI IRAWAN", kelas: "X-1" },
+            "8594": { nama: "AHMAD AL BUKHORY", kelas: "X-1" },
+            "8596": { nama: "AHMAD AZZAM AZIZAN", kelas: "X-1" },
+            "8606": { nama: "ALANO DHIYAULHAQ WAHYUDI", kelas: "X-1" },
+            "8609": { nama: "ALFA KAYNA DIN MADE", kelas: "X-1" },
+            "8619": { nama: "ANINDYA NURUL LATIFAH", kelas: "X-1" },
+            "8649": { nama: "CAROLUS LUCAS LEVASCO", kelas: "X-1" },
+            "8650": { nama: "CHINTYA KASIH HANDONO", kelas: "X-1" },
+            "8652": { nama: "CINTA KASIH NUR HABIBILLAH", kelas: "X-1" },
+            "8667": { nama: "DESYANI NUR RIZKI AMELIA", kelas: "X-1" },
+            "8680": { nama: "DYAH MUSTIKANING RANIHAPSARI", kelas: "X-1" },
+            "8681": { nama: "DZAKIYAH ROIDATUNNISA", kelas: "X-1" },
+            "8688": { nama: "ERICK CHARLES RAMADHAN", kelas: "X-1" },
+            "8689": { nama: "ERINGGO LAMBANG NURAHBANI", kelas: "X-1" },
+            "8707": { nama: "FIRDA DWI ASTUTIK", kelas: "X-1" },
+            "8725": { nama: "HOSEA BAHTERA PUTRA", kelas: "X-1" },
+            "8728": { nama: "IMANUEL VICKY JUNIOR NUGROHO", kelas: "X-1" },
+            "8729": { nama: "IMROATUS SHOLIHAH", kelas: "X-1" },
+            "8758": { nama: "LUQYANA AL KHALWAH", kelas: "X-1" },
+            "8767": { nama: "MAULIDATUZ ZUHRIA", kelas: "X-1" },
+            "8772": { nama: "MOCH SHIDQIL AKBAR", kelas: "X-1" },
+            "8791": { nama: "MUHAMMAD HAFID AL ANSORI", kelas: "X-1" },
+            "8816": { nama: "NAOMISITA ANDI PINASTI", kelas: "X-1" },
+            "8818": { nama: "NATALIA PUJI PANGESTU", kelas: "X-1" },
+            "8839": { nama: "NUR ROHMAH AISYAH", kelas: "X-1" },
+            "8860": { nama: "RAISYA SAIDATUL RAMADHINA", kelas: "X-1" },
+            "8864": { nama: "REGITA DEAN NOVA PRAMESWARI", kelas: "X-1" },
+            "8865": { nama: "REHANA AMELIA WARDOYO", kelas: "X-1" },
+            "8869": { nama: "REVA ZHAFIRA NAJWA", kelas: "X-1" },
+            "8889": { nama: "SARAH AMALIYA SARI", kelas: "X-1" },
+            "8894": { nama: "SAVARA DWI NAZILA", kelas: "X-1" },
+            "8902": { nama: "SINTA AYU NABILA", kelas: "X-1" },
+            "8918": { nama: "TSANIA NAJWA MAULIDA", kelas: "X-1" },
+            "8921": { nama: "VINA DWI SEPTIA RAMADHANI", kelas: "X-1" },
+            "8936": { nama: "ZAINA NAINI ROSA", kelas: "X-1" },
+            
+            // Kelas X-2
+            "8588": { nama: "ADINDA MAURA RAMADHANIA MA'ARIF", kelas: "X-2" },
+            "8592": { nama: "AGNES SILVIA PUTRI IRAWAN", kelas: "X-2" },
+            "8605": { nama: "AKHMADI MAS ALFIN", kelas: "X-2" },
+            "8611": { nama: "ALIFTA AININ QOLBI", kelas: "X-2" },
+            "8613": { nama: "ALVIAN NUR ROCHQIM", kelas: "X-2" },
+            "8623": { nama: "ARIKA ZAHRA SALSABILA", kelas: "X-2" },
+            "8633": { nama: "AURA SAFFANATUS SHOLIKHAH", kelas: "X-2" },
+            "8637": { nama: "AYUK NUR FADHILAH", kelas: "X-2" },
+            "8646": { nama: "BIMA SATRIA NUR HAQIQI", kelas: "X-2" },
+            "8651": { nama: "CIKA NUR LAILI", kelas: "X-2" },
+            "8663": { nama: "DELIMA KANDA TUNGGA DEWI", kelas: "X-2" },
+            "8676": { nama: "DINDA SALSABILA SALWA", kelas: "X-2" },
+            "8720": { nama: "HAMIDAH KHANZANI", kelas: "X-2" },
+            "8738": { nama: "JELITA PRAMESWARI", kelas: "X-2" },
+            "8747": { nama: "KEYSHA KHAIRANI VALENTINA", kelas: "X-2" },
+            "8751": { nama: "KIRANI ZAHROTU SHIFA", kelas: "X-2" },
+            "8753": { nama: "LAKEISHA ADIBA OKTAVIANI", kelas: "X-2" },
+            "8765": { nama: "MAULANA DAVIN ARDIANTO", kelas: "X-2" },
+            "8769": { nama: "MAYZAHROH ARINI PUTRI", kelas: "X-2" },
+            "8774": { nama: "MOCHAMAD HAIKAL MAGHALI", kelas: "X-2" },
+            "8781": { nama: "MOHAMAD RAFI FATH", kelas: "X-2" },
+            "8788": { nama: "MUHAMMAD FAISAL KHUSNUL IMAM", kelas: "X-2" },
+            "8823": { nama: "NAZILA FITRIANI AGUSTIN", kelas: "X-2" },
+            "8829": { nama: "NOER MUHAMMAD AL FATHONI", kelas: "X-2" },
+            "8847": { nama: "PUTRI HILDHA", kelas: "X-2" },
+            "8854": { nama: "RADITYA DEVANDRA", kelas: "X-2" },
+            "8857": { nama: "RAIHAN AZRUL RAFI AKBAR", kelas: "X-2" },
+            "8867": { nama: "REINNISA ZHAFIRA ARDANI", kelas: "X-2" },
+            "8875": { nama: "RIZQI AKBAR ALKHAKIM", kelas: "X-2" },
+            "8879": { nama: "ROSSALINDA LINSKY", kelas: "X-2" },
+            "8883": { nama: "SAFIRA KARUNIA PUTRI", kelas: "X-2" },
+            "8900": { nama: "SHINTA AULIA DASILVA", kelas: "X-2" },
+            "8922": { nama: "VINO ARDYAN PRATAMA", kelas: "X-2" },
+            "8926": { nama: "WAFA DITYA PRATIWI", kelas: "X-2" },
+            "8927": { nama: "WIDYA PUTRI MARSHELA", kelas: "X-2" },
+            "8938": { nama: "ZIVANA FEROZE AZILA", kelas: "X-2" },
+            
+            // Kelas X-3
+            "8587": { nama: "ADINA MELATI KUSUMA DEWI", kelas: "X-3" },
+            "8608": { nama: "ALEX SINAGA ARJUNA ANDIK", kelas: "X-3" },
+            "8634": { nama: "AYU ANGEL BR NAPITUPULU", kelas: "X-3" },
+            "8647": { nama: "CALLYSTA FATYA AZZAHRO", kelas: "X-3" },
+            "8653": { nama: "CITRA AULIA RAMADANI", kelas: "X-3" },
+            "8658": { nama: "DAVIN BAGASKARA SUSANTO", kelas: "X-3" },
+            "8659": { nama: "DEATUZ ZAHRO", kelas: "X-3" },
+            "8674": { nama: "DINDA ANGELINA LESTANTRI", kelas: "X-3" },
+            "8679": { nama: "DWI MELINDASARI", kelas: "X-3" },
+            "8686": { nama: "ELSA NOVIANTI", kelas: "X-3" },
+            "8693": { nama: "ETHANTIARA FIKA LIBRIYA", kelas: "X-3" },
+            "8713": { nama: "GADING CHENA DWIRAMA DAYUH", kelas: "X-3" },
+            "8719": { nama: "GRISELDA AZARIA ATIKA SUSANTO", kelas: "X-3" },
+            "8722": { nama: "HESSA SALMA MAULANA AZZAHRAH", kelas: "X-3" },
+            "8723": { nama: "HETTY", kelas: "X-3" },
+            "8731": { nama: "INDAH KHOIRUNNISA", kelas: "X-3" },
+            "8737": { nama: "JAMALUDEN", kelas: "X-3" },
+            "8762": { nama: "MALVINO VANDANU ERLANGGA", kelas: "X-3" },
+            "8773": { nama: "MOCHAMAD DEDHAM DWI RAZKY", kelas: "X-3" },
+            "8777": { nama: "MOCHAMMAD HAFIZH BAIHAQI", kelas: "X-3" },
+            "8787": { nama: "MUHAMMAD FADIL AL MARZUQI", kelas: "X-3" },
+            "8789": { nama: "MUHAMMAD FARID SURURY", kelas: "X-3" },
+            "8793": { nama: "MUHAMMAD MASATO JAYA ABADI", kelas: "X-3" },
+            "8803": { nama: "MUHIMMATUL UMMAH", kelas: "X-3" },
+            "8811": { nama: "NADINE TALBIYAH MAULADINAH", kelas: "X-3" },
+            "8815": { nama: "NAIRA SALSABILA ASLAM", kelas: "X-3" },
+            "8836": { nama: "NUR ANZILA ROMADHONA", kelas: "X-3" },
+            "8845": { nama: "PUTRA ARLY ARKYANANDA INDRAWAN", kelas: "X-3" },
+            "8851": { nama: "RACHMA WARDANI", kelas: "X-3" },
+            "8856": { nama: "RAHMADILLAH ROMADONA", kelas: "X-3" },
+            "8868": { nama: "RENDY DWI SAPUTRA", kelas: "X-3" },
+            "8895": { nama: "SEFFIA RAHMA DANI", kelas: "X-3" },
+            "8899": { nama: "SHINLY EKANAFISA", kelas: "X-3" },
+            "8904": { nama: "SITI FATIMATUZZAHROH S", kelas: "X-3" },
+            "8919": { nama: "VANESA ANASTASIA YULIA SAFITRI", kelas: "X-3" },
+            "8933": { nama: "ZAHRA SALSABILA RAMADHANI", kelas: "X-3" },
+            
+            // Kelas X-4
+            "8602": { nama: "AISYATUL HILAL", kelas: "X-4" },
+            "8604": { nama: "AJENG PUTRI FITRIAH", kelas: "X-4" },
+            "8615": { nama: "AMIR HAMZAH NASHRULLAH", kelas: "X-4" },
+            "8621": { nama: "ANNISA SAFIRA RIFNI", kelas: "X-4" },
+            "8625": { nama: "ARNETHA FELYCIA FIRDA IVANY", kelas: "X-4" },
+            "8627": { nama: "ARYA BINTANG PERMANA", kelas: "X-4" },
+            "8630": { nama: "AULIA RACHELLENA", kelas: "X-4" },
+            "8636": { nama: "AYUDIA PUTRI AZZAHRA", kelas: "X-4" },
+            "8640": { nama: "AZMI MAULANA EL MAKKI", kelas: "X-4" },
+            "8655": { nama: "DAMARA RAHMA AURELLA", kelas: "X-4" },
+            "8670": { nama: "DEWI RATNANINGSIH", kelas: "X-4" },
+            "8671": { nama: "DEWI RATNASWARI", kelas: "X-4" },
+            "8684": { nama: "EKA ROHMAT WAHYU NIKITA J", kelas: "X-4" },
+            "8690": { nama: "ERLIZA ALFIRA IVANA ZANI", kelas: "X-4" },
+            "8692": { nama: "ERSA LAIQLIA AZAHRA", kelas: "X-4" },
+            "8700": { nama: "FELISA DEWI ARISANTI", kelas: "X-4" },
+            "8705": { nama: "FIOREREIN NAYLA ARKAHA", kelas: "X-4" },
+            "8733": { nama: "IO KABANA SAMPOERNA SUPRIADI", kelas: "X-4" },
+            "8741": { nama: "JONATHAN SATRIYA PRATAMA", kelas: "X-4" },
+            "8754": { nama: "LAURA RISMA", kelas: "X-4" },
+            "8755": { nama: "LETYCIA NUR SABRINA", kelas: "X-4" },
+            "8766": { nama: "MAULANA HAFIS ROZIKIN", kelas: "X-4" },
+            "8783": { nama: "MOHAMMAD HARIS SYAIKUL AMIN", kelas: "X-4" },
+            "8792": { nama: "MUHAMMAD HASBIAL KHAQ", kelas: "X-4" },
+            "8798": { nama: "MUHAMMAD RIZKI YOGA PRAMANA", kelas: "X-4" },
+            "8799": { nama: "MUHAMMAD SALMAN YUSUF RAMADHAN", kelas: "X-4" },
+            "8826": { nama: "NILA ZULFA KHODIJAH", kelas: "X-4" },
+            "8837": { nama: "NUR AZIZAH", kelas: "X-4" },
+            "8841": { nama: "NURGAVRILA ASHVA SYAM", kelas: "X-4" },
+            "8846": { nama: "PUTRA BADRIKA FEDORA", kelas: "X-4" },
+            "8858": { nama: "RAIHANA AZ ZHAFIRA", kelas: "X-4" },
+            "8898": { nama: "SEVTA ELIANA ADELA FITRI", kelas: "X-4" },
+            "8905": { nama: "SITI USWATUN KHASANAH", kelas: "X-4" },
+            "8906": { nama: "SITI VIYANTI MALA", kelas: "X-4" },
+            "8930": { nama: "YESAFIRA SALMA CALLISTA", kelas: "X-4" },
+            "8934": { nama: "ZAHRANI CHALISA DARMAWAN", kelas: "X-4" },
+            
+            // Kelas X-5
+            "8614": { nama: "AMELIA GHALIZA PUTRI ARIANTO", kelas: "X-5" },
+            "8656": { nama: "DANISH DAFFA AGNI", kelas: "X-5" },
+            "8661": { nama: "DEDI IRAWAN", kelas: "X-5" },
+            "8664": { nama: "DELLA AGUSTINA RAMADHANI", kelas: "X-5" },
+            "8668": { nama: "DEVINA SIVA ARETA", kelas: "X-5" },
+            "8687": { nama: "ELVIANO HIKAM AL RASYID", kelas: "X-5" },
+            "8696": { nama: "FARADILA ASMARA AGUSTIN", kelas: "X-5" },
+            "8701": { nama: "FELLYCYA DWI ATHALYA", kelas: "X-5" },
+            "8703": { nama: "FERDIAN AQTAR NUGROHO", kelas: "X-5" },
+            "8710": { nama: "FITA DWI PURNAMASARI", kelas: "X-5" },
+            "8716": { nama: "GALEH FARUKFI KUMAINI", kelas: "X-5" },
+            "8718": { nama: "GANGSAR PUTRI MAYSAROH", kelas: "X-5" },
+            "8726": { nama: "IBRAHIM KHASUNA ALAM", kelas: "X-5" },
+            "8745": { nama: "KEISYA AURELLETTA APRILIA PUTRI", kelas: "X-5" },
+            "8748": { nama: "KHEIZA PUTRI SALSABILA", kelas: "X-5" },
+            "8750": { nama: "KIRANI INTAN FIRJATULLAH", kelas: "X-5" },
+            "8757": { nama: "LUCKY PRIYANKA RIDUWAN", kelas: "X-5" },
+            "8768": { nama: "MAULIDYA ZIFAN SAFIRA", kelas: "X-5" },
+            "8784": { nama: "MUCHAMMAD ICHSAN MUZAKKI", kelas: "X-5" },
+            "8790": { nama: "MUHAMMAD FARUQ BAYHAQI", kelas: "X-5" },
+            "8806": { nama: "NABILA AN NAHDIYAH AS SARIY", kelas: "X-5" },
+            "8813": { nama: "NAFISA AZZA AULIA", kelas: "X-5" },
+            "8832": { nama: "NOVA AULIA PUTRI JOULIAH", kelas: "X-5" },
+            "8840": { nama: "NUR WAHYU SASKIA AMELIA NOVIANA PUTRI", kelas: "X-5" },
+            "8843": { nama: "POPY DWI LESTARI", kelas: "X-5" },
+            "8855": { nama: "RAHMA AYU AZAHRA", kelas: "X-5" },
+            "8859": { nama: "RAISSA KAMILAH", kelas: "X-5" },
+            "8874": { nama: "RINDYANI FATIKASARI NUR AISYAH", kelas: "X-5" },
+            "8877": { nama: "ROMI ROFIYAN", kelas: "X-5" },
+            "8887": { nama: "SALWAA NIMAS SAWAB", kelas: "X-5" },
+            "8910": { nama: "SUKMA AYUNDA SURYANINGRAT", kelas: "X-5" },
+            "8911": { nama: "SYAFAQAH ARIFADYA", kelas: "X-5" },
+            "8923": { nama: "VINO RESTU AJI", kelas: "X-5" },
+            "8937": { nama: "ZIBA AZZAHRA ILMI FIRDAUS", kelas: "X-5" },
+            
+            // Kelas X-6
+            "8600": { nama: "AIRA SEFIANA", kelas: "X-6" },
+            "8620": { nama: "ANISYA SALISA WAHDA", kelas: "X-6" },
+            "8632": { nama: "AURA ANGEL PUTRI", kelas: "X-6" },
+            "8639": { nama: "AZKA SALSABILA VYASA", kelas: "X-6" },
+            "8641": { nama: "BAYLQIS AZKIYA PUTRI", kelas: "X-6" },
+            "8642": { nama: "BAYU AKBAR ATALARIZKY FANANI", kelas: "X-6" },
+            "8662": { nama: "DEFANO ATHA ZANUAR", kelas: "X-6" },
+            "8669": { nama: "DEVYAWAFDA FATMALA RIZALDY", kelas: "X-6" },
+            "8677": { nama: "DWI ARISTA", kelas: "X-6" },
+            "8682": { nama: "DZAKIYYA TALITA SAKHI", kelas: "X-6" },
+            "8683": { nama: "DZASKIYAH NABILA YASMINE", kelas: "X-6" },
+            "8695": { nama: "FAIQ NAUFAL CIPTADINATA", kelas: "X-6" },
+            "8708": { nama: "FIRNA NAHWA FIRDAUSI", kelas: "X-6" },
+            "8744": { nama: "KAYLA AZALIA ALTHAF K", kelas: "X-6" },
+            "8752": { nama: "LAILIA RAHMANDA EFENDI", kelas: "X-6" },
+            "8761": { nama: "MADINA DWI RAHMAWATI", kelas: "X-6" },
+            "8770": { nama: "MELANI EKA SARI", kelas: "X-6" },
+            "8809": { nama: "NADIA SHAFIRA ROCHMAD", kelas: "X-6" },
+            "8810": { nama: "NADINE KHALISHA RAYYANI", kelas: "X-6" },
+            "8817": { nama: "NARENDRA ABEL WICAKSONO", kelas: "X-6" },
+            "8820": { nama: "NAYLA THALITA ZAHRA", kelas: "X-6" },
+            "8834": { nama: "NOVARISYA NEVYSSHEILA EFFENDY", kelas: "X-6" },
+            "8842": { nama: "NURIATI INTIDZAR FADILAH", kelas: "X-6" },
+            "8852": { nama: "RADIT ORVALA CHANA", kelas: "X-6" },
+            "8861": { nama: "RAKASIWI MIHARJA", kelas: "X-6" },
+            "8862": { nama: "RAMA BAGUS AL FAREZA", kelas: "X-6" },
+            "8872": { nama: "RICHIE MACHENZIE ICHWANUL PP", kelas: "X-6" },
+            "8876": { nama: "ROBIAH AL ADAWIYAH RAMADHANI", kelas: "X-6" },
+            "8880": { nama: "ROYAN ABILLAHI", kelas: "X-6" },
+            "8891": { nama: "SASKIA RIHADATUL AISY", kelas: "X-6" },
+            "8892": { nama: "SATRIA HADI YUDHISTIRA", kelas: "X-6" },
+            "8909": { nama: "SONYA ADI MAESWARA", kelas: "X-6" },
+            "8912": { nama: "SYAIRA PUTRI PURNAMASARI", kelas: "X-6" },
+            "8928": { nama: "WIDYA WATI MAULINDA", kelas: "X-6" },
+            
+            // Kelas X-7
+            "8586": { nama: "ABRIAN CAHYO SAPUTRA", kelas: "X-7" },
+            "8598": { nama: "AHMAD ZIDNI ALFA HUMAIDA", kelas: "X-7" },
+            "8612": { nama: "ALMAIRA RAHMA PUTRI", kelas: "X-7" },
+            "8617": { nama: "ANDINI SALSA FARADILA", kelas: "X-7" },
+            "8618": { nama: "ANINDITA AGUSTIN", kelas: "X-7" },
+            "8622": { nama: "ARFANTINO SYAH PUTRA DINATA", kelas: "X-7" },
+            "8626": { nama: "ARNEZ FIDO WIRATAMA", kelas: "X-7" },
+            "8643": { nama: "BENTAR WILDAN PRATAMA", kelas: "X-7" },
+            "8673": { nama: "DINA NUR ALIFVIYA", kelas: "X-7" },
+            "8675": { nama: "DINDA NURVITA", kelas: "X-7" },
+            "8702": { nama: "FERA AFRILLIA", kelas: "X-7" },
+            "8704": { nama: "FILDA ZULFI NIHLATUZ ZAHARA", kelas: "X-7" },
+            "8727": { nama: "ILMIRA AMELIA PUTRI", kelas: "X-7" },
+            "8734": { nama: "IRANO DWI SUSANTO", kelas: "X-7" },
+            "8740": { nama: "JESSICA FAUZIYAH IZZATI", kelas: "X-7" },
+            "8743": { nama: "KALISTA CESA PUTRI WULANDARI", kelas: "X-7" },
+            "8756": { nama: "LITA CAHYANI FAUZIAH", kelas: "X-7" },
+            "8760": { nama: "M TEGAR RAHMAT ILLAHI", kelas: "X-7" },
+            "8763": { nama: "MARISA FAUSTIN ZAM ZAM", kelas: "X-7" },
+            "8776": { nama: "MOCHAMAD RAFFA AZKA MAULANA", kelas: "X-7" },
+            "8785": { nama: "MUHAMMAD ADITYA DAFFA AL KHAIRU", kelas: "X-7" },
+            "8786": { nama: "MUHAMMAD EVAN BIMANTARA SUSAMTO", kelas: "X-7" },
+            "8800": { nama: "MUHAMMAD VARDIKA CHANA", kelas: "X-7" },
+            "8831": { nama: "NOVA AMIRAH RAMADHANI", kelas: "X-7" },
+            "8835": { nama: "NUFAIL DHAFA RACHMATULLAH", kelas: "X-7" },
+            "8838": { nama: "NUR LAILI MIFTAKHUL JANNAH", kelas: "X-7" },
+            "8848": { nama: "PUTRI KUSUMA WARDHANI DYLIK", kelas: "X-7" },
+            "8853": { nama: "RADITA DWI PURWANTI", kelas: "X-7" },
+            "8881": { nama: "RR AGNIS NUR HIDAYAH", kelas: "X-7" },
+            "8882": { nama: "SAFIRA INDAH PERMATASARI", kelas: "X-7" },
+            "8897": { nama: "SENZHIVERA ALCASTER", kelas: "X-7" },
+            "8913": { nama: "SYAVIRA AZZAHRANI HARIYANTO", kelas: "X-7" },
+            "8915": { nama: "TIARA INDAH KIRANA", kelas: "X-7" },
+            "8917": { nama: "TSALIS NAILUL MUNA", kelas: "X-7" },
+            "8929": { nama: "WULAN ADINDA SAFITRI", kelas: "X-7" },
+            "8939": { nama: "ZOEA HIJRIYA WARDANI", kelas: "X-7" },
+            
+            // Kelas X-8
+            "8584": { nama: "ABID AHNAF AZ ZUHFAR", kelas: "X-8" },
+            "8599": { nama: "AHMADA ARDI RAHMAWAN", kelas: "X-8" },
+            "8603": { nama: "AISYAWA GAHARU PRATAMA", kelas: "X-8" },
+            "8607": { nama: "ALDI REIHAN SAPUTRA", kelas: "X-8" },
+            "8628": { nama: "ATALA UNGGARANA VINCEN ILHAMSYAH", kelas: "X-8" },
+            "8645": { nama: "BIMA NARARYA KURNIA WAHYUDI", kelas: "X-8" },
+            "8648": { nama: "CANTIK KASIH NUR HABIBILLAH", kelas: "X-8" },
+            "8657": { nama: "DANYRA RAHMA SUSANTO", kelas: "X-8" },
+            "8665": { nama: "DESI PUSPITA SARI", kelas: "X-8" },
+            "8666": { nama: "DESWITA KEYLA MELANI PUTRI", kelas: "X-8" },
+            "8694": { nama: "EVA LAYNA ZAFIRAH", kelas: "X-8" },
+            "8699": { nama: "FEBIANTI NURJANAH", kelas: "X-8" },
+            "8714": { nama: "GADIZA SYALABIYYAH AZZAHRA", kelas: "X-8" },
+            "8715": { nama: "GALANG WIRASENA", kelas: "X-8" },
+            "8717": { nama: "GANES PUTRI MEIRIZA", kelas: "X-8" },
+            "8735": { nama: "IRFANIA DWI AROFAH", kelas: "X-8" },
+            "8739": { nama: "JESIKA ALYA RAMADHANI", kelas: "X-8" },
+            "8749": { nama: "KIRANA PUTRI ALEXSANDRA SAEFUDIN", kelas: "X-8" },
+            "8771": { nama: "MIZAWA ROSALIND", kelas: "X-8" },
+            "8795": { nama: "MUHAMMAD PRABU FIRMANSYAH", kelas: "X-8" },
+            "8801": { nama: "MUHAMMAD WALIYUR RAHMAN", kelas: "X-8" },
+            "8804": { nama: "MUKHAMAD ABIYYU BRIMA ARKAN", kelas: "X-8" },
+            "8807": { nama: "NABILA FILDZAH AHMADAH", kelas: "X-8" },
+            "8808": { nama: "NABILA SILMI NUR AQNI", kelas: "X-8" },
+            "8812": { nama: "NADINKA SALWA AZ ZAHRA", kelas: "X-8" },
+            "8814": { nama: "NAFISA DHIRA AYUNINGTYAS", kelas: "X-8" },
+            "8827": { nama: "NITA DEWI MAHBUBAH", kelas: "X-8" },
+            "8830": { nama: "NOUMIRA MEYDA SHAFITRI", kelas: "X-8" },
+            "8850": { nama: "QUEENEENA MEIAYA AURALYRA ARMI", kelas: "X-8" },
+            "8866": { nama: "REIKI MUHAMMAD RAHADIAN NUGRAHA", kelas: "X-8" },
+            "8871": { nama: "REYHANA EKA JULIA NINGRUM", kelas: "X-8" },
+            "8884": { nama: "SALOMO DAHAYU", kelas: "X-8" },
+            "8885": { nama: "SALSA SAFFA OKTAVIA", kelas: "X-8" },
+            "8896": { nama: "SELINA GITA RAHARJA", kelas: "X-8" },
+            "8908": { nama: "SOFIYAH AMINATUL JAMILAH", kelas: "X-8" },
+            "8931": { nama: "YOHANES SEYVA ISEVART", kelas: "X-8" },
+            
+            // Kelas X-9
+            "8610": { nama: "ALHAFIZ FAHREZI TAUFAN", kelas: "X-9" },
+            "8616": { nama: "ANA TASAYA PUTRI AZZAHRA", kelas: "X-9" },
+            "8624": { nama: "ARINI NUR ISMAYANTI", kelas: "X-9" },
+            "8629": { nama: "ATIQA FAIRUZ CHALISA", kelas: "X-9" },
+            "8631": { nama: "AULIYA NUR AINI", kelas: "X-9" },
+            "8638": { nama: "AZKA ARDIANSYAH", kelas: "X-9" },
+            "8644": { nama: "BERLIANI PUTRI PRASASTI", kelas: "X-9" },
+            "8660": { nama: "DEAZ ARIF PRATAMA", kelas: "X-9" },
+            "8672": { nama: "DEWINTA HANY LESTARI", kelas: "X-9" },
+            "8685": { nama: "ELISA DHIYAH AYU NINGRUM", kelas: "X-9" },
+            "8691": { nama: "ERLYTA KARISMA WATI", kelas: "X-9" },
+            "8697": { nama: "FARHA ZAHRANIA QUROTU AINI", kelas: "X-9" },
+            "8698": { nama: "FAUZIAH NUR HIDAYAH", kelas: "X-9" },
+            "8706": { nama: "FIRA DIAN ANGRAINI", kelas: "X-9" },
+            "8711": { nama: "FRISKA AIRA PUTRI", kelas: "X-9" },
+            "8721": { nama: "HAMKA ARMAN NABABAN", kelas: "X-9" },
+            "8724": { nama: "HIMMATUL ALIYAH", kelas: "X-9" },
+            "8730": { nama: "IMROATUS SHOLIKHA", kelas: "X-9" },
+            "8736": { nama: "IZZHA INDAH MUTIA KASIH", kelas: "X-9" },
+            "8742": { nama: "JOVITA AMELIA SARI", kelas: "X-9" },
+            "8759": { nama: "M ADIL PINULUH", kelas: "X-9" },
+            "8764": { nama: "MAUDINA FARA EKA WIBOWO", kelas: "X-9" },
+            "8778": { nama: "MOH AKMAL FAKHRII AL HAKIM", kelas: "X-9" },
+            "8780": { nama: "MOH ZAINUR ROHMAN", kelas: "X-9" },
+            "8782": { nama: "MOHAMMAD AKBAR FAHREZA", kelas: "X-9" },
+            "8802": { nama: "MUHAMMAD ZIGGY YOSA PERDANA", kelas: "X-9" },
+            "8805": { nama: "MUKHAMAD REFALDO DWI AFANDI", kelas: "X-9" },
+            "8819": { nama: "NAUFAL HAFIDZ MAULANA", kelas: "X-9" },
+            "8824": { nama: "NAZWA AINA ZAYYIDAH", kelas: "X-9" },
+            "8828": { nama: "NIZAR NIRWANA MAULA IBRAHIM", kelas: "X-9" },
+            "8844": { nama: "PUJI RAHAYU", kelas: "X-9" },
+            "8873": { nama: "RINDU AYU PERTIWI", kelas: "X-9" },
+            "8890": { nama: "SASI MARWA LAIRIA", kelas: "X-9" },
+            "8914": { nama: "TALITHA DZAKIYAH ALMAURA", kelas: "X-9" },
+            "8920": { nama: "VANESTA DUWI ERVINA", kelas: "X-9" },
+            "8935": { nama: "ZAHROTUS SYAUQIA WAFA", kelas: "X-9" },
+            
+            // Kelas X-10
+            "8585": { nama: "ABIMANYU RIZKY GENTA SAFERA PUTRA", kelas: "X-10" },
+            "8589": { nama: "ADINIA BILQIS SALSABILA", kelas: "X-10" },
+            "8593": { nama: "AHMAD AFFA RIZQI", kelas: "X-10" },
+            "8595": { nama: "AHMAD ARIF SAPUTRA", kelas: "X-10" },
+            "8597": { nama: "AHMAD SATYA ABIMANYU", kelas: "X-10" },
+            "8601": { nama: "AIRIN NAURAH RAYYANI", kelas: "X-10" },
+            "8635": { nama: "AYU SYAFA NABILLA", kelas: "X-10" },
+            "8654": { nama: "DAFFA NINOPRATAMA SETIAWAN", kelas: "X-10" },
+            "8678": { nama: "DWI LESTARI", kelas: "X-10" },
+            "8709": { nama: "FIRZANAH FAUZIYAH", kelas: "X-10" },
+            "8712": { nama: "GABRIELLA MEGA SELVIA", kelas: "X-10" },
+            "8732": { nama: "INDI TRI HAPSARI", kelas: "X-10" },
+            "8746": { nama: "KENJI NUGRAHA VALENTINO", kelas: "X-10" },
+            "8775": { nama: "MOCHAMAD JAUHAR NEHRU", kelas: "X-10" },
+            "8779": { nama: "MOH REZA ADITYA RIZKY", kelas: "X-10" },
+            "8794": { nama: "MUHAMMAD MIRZA HAEDAR", kelas: "X-10" },
+            "8796": { nama: "MUHAMMAD PRADIKA ANGGI FIRMANSYAH", kelas: "X-10" },
+            "8797": { nama: "MUHAMMAD RAIHAN ALFARIZQI", kelas: "X-10" },
+            "8821": { nama: "NAYMA AL KHAIRA SHOLAHUDIN HIBATULLOH", kelas: "X-10" },
+            "8822": { nama: "NAYYARA SHIFA FAWAZZAH GHAZALI", kelas: "X-10" },
+            "8825": { nama: "NIHAYATUL FAUZIYAH", kelas: "X-10" },
+            "8833": { nama: "NOVA ZUANITA PUTRI", kelas: "X-10" },
+            "8849": { nama: "QUEEN TSANIA NADIA KHAIRANI", kelas: "X-10" },
+            "8863": { nama: "RANIA SALLY HAVILAH", kelas: "X-10" },
+            "8870": { nama: "REVINA EKA FEBRIANANTA", kelas: "X-10" },
+            "8878": { nama: "ROSSALINA AURA RAMADHANI", kelas: "X-10" },
+            "8886": { nama: "SALWA AURA VIA MENTARI", kelas: "X-10" },
+            "8888": { nama: "SANG HYANG ASTA", kelas: "X-10" },
+            "8893": { nama: "SATRIA YANUAR EFENDI", kelas: "X-10" },
+            "8901": { nama: "SINDI SEPTIANA SARI", kelas: "X-10" },
+            "8903": { nama: "SITI DANIS TAHTAL ARSYI", kelas: "X-10" },
+            "8907": { nama: "SOFI MUSLIMATUZ SHOLIKHAH", kelas: "X-10" },
+            "8916": { nama: "TITANIA RIZKY ANDINI", kelas: "X-10" },
+            "8924": { nama: "VIONA LAKHEISA AZZAHRA", kelas: "X-10" },
+            "8925": { nama: "VITA ASTRIANI", kelas: "X-10" },
+            "8932": { nama: "ZAFIAN DERMAWAN", kelas: "X-10" },
+            
+            // Kelas XI-1
+            "8269": { nama: "AHMAD NURIL QOLBI", kelas: "XI-1" },
+            "8270": { nama: "AHMAD RIJAL AL AFIF", kelas: "XI-1" },
+            "8271": { nama: "AISYAH OCTAVIA AULIA", kelas: "XI-1" },
+            "8276": { nama: "ALDINO PUTRA ADI NUGRAHA", kelas: "XI-1" },
+            "8283": { nama: "ALMAGHVIRA RIZKY EFFENDY", kelas: "XI-1" },
+            "8286": { nama: "ALYSIA DELLA MURFAHANIK FAIZ", kelas: "XI-1" },
+            "8299": { nama: "AQILAH ATHALLAZAHRA ARDINE", kelas: "XI-1" },
+            "8305": { nama: "ATHAILLAH AILSA JACINDA", kelas: "XI-1" },
+            "8309": { nama: "AURA WULAN RAHMADANI", kelas: "XI-1" },
+            "8323": { nama: "CADEREYN ARETA", kelas: "XI-1" },
+            "8353": { nama: "ELISABETH SELLYNA", kelas: "XI-1" },
+            "8360": { nama: "FAISHAL ALI REZA", kelas: "XI-1" },
+            "8363": { nama: "FAREL ARDINATA MISLANDA PUTRA", kelas: "XI-1" },
+            "8368": { nama: "FEYOLA VALENCIA UTOMO", kelas: "XI-1" },
+            "8570": { nama: "IBRANI CALFIN MARBUN", kelas: "XI-1" },
+            "8383": { nama: "JASMINE PUTRI ALMEERA", kelas: "XI-1" },
+            "8389": { nama: "KAISYA MUAMMAR", kelas: "XI-1" },
+            "8400": { nama: "LAILATUL MAGHFIROH HAYATI", kelas: "XI-1" },
+            "8405": { nama: "LUNA ALMAURA", kelas: "XI-1" },
+            "8413": { nama: "MALVINO CHOLVI JOVANTAMA", kelas: "XI-1" },
+            "8414": { nama: "MANITA ARDHIANSYAH RAHMA", kelas: "XI-1" },
+            "8415": { nama: "MARIA VIDYA KHANDIS", kelas: "XI-1" },
+            "8416": { nama: "MARINDA AISYAH MAWLAAYA IRBAH", kelas: "XI-1" },
+            "8421": { nama: "MEISYA NURUL ISNAINI", kelas: "XI-1" },
+            "8431": { nama: "MOCHAMMAD RAJWA SURYA SASTRO SAPUTRA", kelas: "XI-1" },
+            "8442": { nama: "MUHAMMAD ASHRAF PUTRA RAHMANI", kelas: "XI-1" },
+            "8572": { nama: "MUHAMMAD MUJIB HABIBI", kelas: "XI-1" },
+            "8460": { nama: "MUHAMMAD SULTON ARIF MAULANA", kelas: "XI-1" },
+            "8469": { nama: "NADIN MAYSAM", kelas: "XI-1" },
+            "8498": { nama: "PUTRI KUMALASARI", kelas: "XI-1" },
+            "8499": { nama: "PUTRINADIAN ANDINISARI PURNAMA", kelas: "XI-1" },
+            "8500": { nama: "QAIDA MAHESWARI ANINDYA HIDAYAT", kelas: "XI-1" },
+            "8506": { nama: "RAHMANIA AHMAD SAFIRADEWI", kelas: "XI-1" },
+            "8528": { nama: "SAFIRA ELINA PUTRI", kelas: "XI-1" },
+            "8532": { nama: "SAMARA PUTRI ZULKIFLI", kelas: "XI-1" },
+            "8556": { nama: "YASMIN AYU FAIRUNIZA", kelas: "XI-1" },
+            
+            // Kelas XI-2
+            "8263": { nama: "ADINDA PUSPITA KARUNIASARI", kelas: "XI-2" },
+            "8265": { nama: "AFDIAN RASYA NAUFAL", kelas: "XI-2" },
+            "8272": { nama: "AISYAH SINTA DEWI SYAFITRI", kelas: "XI-2" },
+            "8280": { nama: "ALFI AULYA SUA AGUSTIN", kelas: "XI-2" },
+            "8303": { nama: "ARLYNE ANINDYA ANDIK", kelas: "XI-2" },
+            "8310": { nama: "AURELIA CALLISTA ANGGRAINI", kelas: "XI-2" },
+            "8316": { nama: "BAGAS PRAWIRA BIMANTARA", kelas: "XI-2" },
+            "8331": { nama: "CINTYA ALIN PRAMUDITA", kelas: "XI-2" },
+            "8336": { nama: "DAVIDA DWI PRATIWI", kelas: "XI-2" },
+            "8340": { nama: "DESFITA CAHYA ARINI", kelas: "XI-2" },
+            "8345": { nama: "DIO RASYA ADITYA", kelas: "XI-2" },
+            "8357": { nama: "FAHMIDA HAPSARI RAZZAQEE", kelas: "XI-2" },
+            "8376": { nama: "HAFIZH ABBAS KURNIAWAN", kelas: "XI-2" },
+            "8377": { nama: "HARDHIKA YUDHA KAVIN PRATAMA", kelas: "XI-2" },
+            "8382": { nama: "IZKA LAILA KHOMSA NISA'UL ARIFI", kelas: "XI-2" },
+            "8390": { nama: "KAMILA NAJA", kelas: "XI-2" },
+            "8394": { nama: "KEZIA NATALIE WIBOWO", kelas: "XI-2" },
+            "8397": { nama: "KHOFI ZAKIYYAN ATHO'ULLOH", kelas: "XI-2" },
+            "8399": { nama: "LAILA ARTA DEWI", kelas: "XI-2" },
+            "8403": { nama: "LELI AVRILIA", kelas: "XI-2" },
+            "8422": { nama: "MEY NENSY ZALIATY", kelas: "XI-2" },
+            "8430": { nama: "MOCHAMMAD MARVIN LUCKIANSYAH WARDANY", kelas: "XI-2" },
+            "8440": { nama: "MUHAMMAD ALFIN DWI FIRMANSYAH", kelas: "XI-2" },
+            "8449": { nama: "MUHAMMAD HAIKAL HAMZAH", kelas: "XI-2" },
+            "8459": { nama: "MUHAMMAD SEPTIAN FALAH RAMADHAN", kelas: "XI-2" },
+            "8474": { nama: "NASWA LAILY QUTROTUL AINI", kelas: "XI-2" },
+            "8475": { nama: "NATHANIELA RAIHANAH SETYAWAN", kelas: "XI-2" },
+            "8578": { nama: "NAURAH YUDITA RAMADHANTI WIBOWO", kelas: "XI-2" },
+            "8479": { nama: "NAYLA RASYA MAHIRA", kelas: "XI-2" },
+            "8490": { nama: "NUR AINI", kelas: "XI-2" },
+            "8491": { nama: "NUR FADILAH", kelas: "XI-2" },
+            "8523": { nama: "RIZAL AZAM MUZAKI", kelas: "XI-2" },
+            "8538": { nama: "SYABILA AULIA AZ-ZAHRA", kelas: "XI-2" },
+            "8540": { nama: "SYIFA FAUZIYAH", kelas: "XI-2" },
+            "8542": { nama: "TAZKIA VELITA ISTIQFARA", kelas: "XI-2" },
+            "8561": { nama: "ZAHRATU SYIFA'", kelas: "XI-2" },
+            
+            // Kelas XI-3
+            "8255": { nama: "ABIFAEYZA MUHAMMAD DYAURRAHMAN", kelas: "XI-3" },
+            "8257": { nama: "ABIYYU NAUFAL ZAKY ASNAR", kelas: "XI-3" },
+            "8273": { nama: "AISYAH ZAHIRA", kelas: "XI-3" },
+            "8566": { nama: "ALDO VANTINALDO", kelas: "XI-3" },
+            "8290": { nama: "ANANTA PRATAMA", kelas: "XI-3" },
+            "8296": { nama: "ANISAH PRATIWI", kelas: "XI-3" },
+            "8315": { nama: "BACHRALFRIDHO REYSHADIN ILMAN", kelas: "XI-3" },
+            "8317": { nama: "BENI RAIHAN ADRIANSYAH", kelas: "XI-3" },
+            "8338": { nama: "DEA KAHAYA AISHAWA", kelas: "XI-3" },
+            "8346": { nama: "DIRGAHAYU RISKA RAMADANI", kelas: "XI-3" },
+            "8365": { nama: "FAWWAZKA FALAJ WAHANDY", kelas: "XI-3" },
+            "8374": { nama: "GALUH AVRIL DINDA ZASKIA", kelas: "XI-3" },
+            "8387": { nama: "JOSEPH KENZIE SURYA WIJAYA", kelas: "XI-3" },
+            "8404": { nama: "LIVINA MARIA ASHRAEL", kelas: "XI-3" },
+            "8406": { nama: "M. AHNAF RAMADHANI", kelas: "XI-3" },
+            "8426": { nama: "MOCHAMAD NURIL MAHMUDI AL TAZAM BILLAH", kelas: "XI-3" },
+            "8433": { nama: "MOHAMMAD ADAM RAYLIANSYAH", kelas: "XI-3" },
+            "8439": { nama: "MUHAMMAD ALDO RIZQIANSYAH", kelas: "XI-3" },
+            "8450": { nama: "MUHAMMAD HENDRIK.A.P", kelas: "XI-3" },
+            "8571": { nama: "MUHAMMAD IZZULIL HAQ", kelas: "XI-3" },
+            "8461": { nama: "MUHAMMAD SYAUQIL JINAN", kelas: "XI-3" },
+            "8462": { nama: "MUHAMMAD WAHYU AL AKBAR", kelas: "XI-3" },
+            "8464": { nama: "MUKHAMMAD RIZQI YAHYA", kelas: "XI-3" },
+            "8476": { nama: "NAVISYA AURA MADA", kelas: "XI-3" },
+            "8483": { nama: "NESSA ACHDIA MAGDALENA TUNGGADEWI", kelas: "XI-3" },
+            "8573": { nama: "OCTAVIAN AMRULLAH", kelas: "XI-3" },
+            "8513": { nama: "REIVALDIANO BINTANG MAHARDIKA", kelas: "XI-3" },
+            "8516": { nama: "REVANO ARDIANSA PUTRA RAMADANI", kelas: "XI-3" },
+            "8519": { nama: "RIFQI ATHALLAH SYAH", kelas: "XI-3" },
+            "8522": { nama: "RIZA AKBAR ALMUQSITH", kelas: "XI-3" },
+            "8524": { nama: "RIZKI ANDI ABDILLAH", kelas: "XI-3" },
+            "8530": { nama: "SALSA BIEANKA FEBITAMA", kelas: "XI-3" },
+            "8544": { nama: "TIARA VIONA VIRDAUS", kelas: "XI-3" },
+            "8559": { nama: "YOSSI AMRU AT-TAUFIK", kelas: "XI-3" },
+            "8562": { nama: "ZALFA NAIDIA NATASYA", kelas: "XI-3" },
+            "8576": { nama: "ZASKIA FAIDA AZMI", kelas: "XI-3" },
+            
+            // Kelas XI-4
+            "8258": { nama: "ACHMAD FAUZAN DWI GHAZALAH", kelas: "XI-4" },
+            "8262": { nama: "ADINDA LAILATUZ ZUHRO", kelas: "XI-4" },
+            "8268": { nama: "AHMAD ELMAN NAFI GUNARTO", kelas: "XI-4" },
+            "8292": { nama: "ANGGA RIZKY PUTRA SETIAWAN", kelas: "XI-4" },
+            "8301": { nama: "ARKA DAEGAL ATMA JAYA", kelas: "XI-4" },
+            "8313": { nama: "AZIZ AHMAD MUDHAKAR", kelas: "XI-4" },
+            "8314": { nama: "AZLAN RIZQI FEBRIANSYAH", kelas: "XI-4" },
+            "8319": { nama: "BIANCHA VALENCIA ARIFIZANTY.P", kelas: "XI-4" },
+            "8325": { nama: "CATRIN AYU MAHESYA", kelas: "XI-4" },
+            "8326": { nama: "CHALLYSTA ZABANIYAH HOSHI SUSISCO", kelas: "XI-4" },
+            "8327": { nama: "CHAREN VERONICA KUSUMA", kelas: "XI-4" },
+            "8334": { nama: "DAHANA SAIKATZU ALBARIZY", kelas: "XI-4" },
+            "8337": { nama: "DAVIN DWI DARMA", kelas: "XI-4" },
+            "8341": { nama: "DEVANDIO RIDHO AL KHAFIDZ", kelas: "XI-4" },
+            "8352": { nama: "ELFITRI SUGI PRIHATI", kelas: "XI-4" },
+            "8381": { nama: "ISLAUKHA NUZRILIA", kelas: "XI-4" },
+            "8407": { nama: "M. ABYAZ MAULIDI AL BALAWI", kelas: "XI-4" },
+            "8429": { nama: "MOCHAMMAD IBNU AHLUL A'FA", kelas: "XI-4" },
+            "8435": { nama: "MUHAMAD SYIAM SEPTIAN SYAH", kelas: "XI-4" },
+            "8444": { nama: "MUHAMMAD FACHRI AR RASYID", kelas: "XI-4" },
+            "8447": { nama: "MUHAMMAD FATHIR AFZA ANWAR", kelas: "XI-4" },
+            "8452": { nama: "MUHAMMAD IRFAN", kelas: "XI-4" },
+            "8455": { nama: "MUHAMMAD RAGAN ENGGRIYANG", kelas: "XI-4" },
+            "8456": { nama: "MUHAMMAD RIFKY ARIFUDIN", kelas: "XI-4" },
+            "8458": { nama: "MUHAMMAD SATRIA MAULANA", kelas: "XI-4" },
+            "8471": { nama: "NAJWA ANINDYA BILQIS RIZKIYUDIN", kelas: "XI-4" },
+            "8477": { nama: "NAYAKA MAULANA AZKA SYARIF", kelas: "XI-4" },
+            "8485": { nama: "NIKMA FATIHAH OCEAN HANANI", kelas: "XI-4" },
+            "8493": { nama: "NURUS SA'IIDATUL HAQIQI", kelas: "XI-4" },
+            "8502": { nama: "RAFAEL ANGGORO", kelas: "XI-4" },
+            "8505": { nama: "RAHARDIAN PUTRA RAYA ALBANI", kelas: "XI-4" },
+            "8509": { nama: "RASYA ISLAMI HEPPY PRATAMA", kelas: "XI-4" },
+            "8517": { nama: "REZA TANGGUH SAGARA", kelas: "XI-4" },
+            "8534": { nama: "SEVILLA MAHARANI", kelas: "XI-4" },
+            "8548": { nama: "VANIA EKA AMANDA PUTRI", kelas: "XI-4" },
+            "8553": { nama: "WHISNU ADI PRASETYO", kelas: "XI-4" },
+            
+            // Kelas XI-5
+            "8267": { nama: "AHMAD DAFFA WIJOYO", kelas: "XI-5" },
+            "8277": { nama: "ALFA SALMA FARIKHA", kelas: "XI-5" },
+            "8282": { nama: "ALIF SETIAWAN", kelas: "XI-5" },
+            "8289": { nama: "ANA FITRIATUL WAKHIDAH", kelas: "XI-5" },
+            "8308": { nama: "AURA SINTA MARGARETA", kelas: "XI-5" },
+            "8312": { nama: "AZINDA LINTANG ANA AZ-ZAHRA", kelas: "XI-5" },
+            "8332": { nama: "CITRA SOFIA RAMADANI", kelas: "XI-5" },
+            "8569": { nama: "DAFFA AMRULLOH UTOMO", kelas: "XI-5" },
+            "8335": { nama: "DANIS RAYHAN NUR ABIDIN", kelas: "XI-5" },
+            "8348": { nama: "DONI DWI HANDIKA", kelas: "XI-5" },
+            "8351": { nama: "EKA LENI OKTAVIANA", kelas: "XI-5" },
+            "8359": { nama: "FAIRA RIZKA ELYSIA", kelas: "XI-5" },
+            "8361": { nama: "FAKHRY DWI JULIANMA", kelas: "XI-5" },
+            "8367": { nama: "FERA ANGGRAINI", kelas: "XI-5" },
+            "8370": { nama: "FIOLA RAMADHANIE SHINDU", kelas: "XI-5" },
+            "8379": { nama: "IMELDA KHARISMA PUTRI", kelas: "XI-5" },
+            "8396": { nama: "KHANZA CALLISTA AL AZMI", kelas: "XI-5" },
+            "8398": { nama: "KIRANI DZIL IZZATI", kelas: "XI-5" },
+            "8418": { nama: "MAWADDAH FATIMATUZZAHRA", kelas: "XI-5" },
+            "8420": { nama: "MEI SHELLA YOLANDA PUTRI", kelas: "XI-5" },
+            "8424": { nama: "MITA AULIA", kelas: "XI-5" },
+            "8427": { nama: "MOCHAMAD TITO PRASETYO", kelas: "XI-5" },
+            "8445": { nama: "MUHAMMAD FAHRI AZHAR", kelas: "XI-5" },
+            "8451": { nama: "MUHAMMAD ILHAM FIRMANSYAH", kelas: "XI-5" },
+            "8466": { nama: "NABILA AYU SALMA", kelas: "XI-5" },
+            "8467": { nama: "NADIA IMRO'ATUL MUFIDA", kelas: "XI-5" },
+            "8478": { nama: "NAYLA IQLIMATUL KHAMIDA", kelas: "XI-5" },
+            "8480": { nama: "NAZILA AZWA SAVIRA", kelas: "XI-5" },
+            "8481": { nama: "NELY ENJELITA", kelas: "XI-5" },
+            "8487": { nama: "NIROH NUR AL FINA", kelas: "XI-5" },
+            "8488": { nama: "NOVIA MAYSAROH", kelas: "XI-5" },
+            "8497": { nama: "PUTRI AYU MARDIYAH", kelas: "XI-5" },
+            "8503": { nama: "RAFAEL AURELIO WIDYA PUTRA", kelas: "XI-5" },
+            "8511": { nama: "REHAN ARYA PRATAMA", kelas: "XI-5" },
+            "8531": { nama: "SALWA KAYLA PUTRI", kelas: "XI-5" },
+            "8557": { nama: "YASMIN KHOTFI ROSIDA MUKTI", kelas: "XI-5" },
+            
+            // Kelas XI-6
+            "8278": { nama: "ALFARISKA RAHMATINA", kelas: "XI-6" },
+            "8284": { nama: "ALVIRA VAIRA VANENINA", kelas: "XI-6" },
+            "8297": { nama: "ANNASTASYA NUR'AINI", kelas: "XI-6" },
+            "8307": { nama: "AULIA PUTRI ARIYANTI", kelas: "XI-6" },
+            "8582": { nama: "BETA KHOIROTUL UMMAH", kelas: "XI-6" },
+            "8322": { nama: "BUSRO LANA A'ZAM", kelas: "XI-6" },
+            "8333": { nama: "CLARISYA AFRILITA PUTRI", kelas: "XI-6" },
+            "8358": { nama: "FAIQAH LAILAMAYYASAH", kelas: "XI-6" },
+            "8366": { nama: "FAZA AURELLIA HASAN", kelas: "XI-6" },
+            "8369": { nama: "FINDI EKA RISMAWATI", kelas: "XI-6" },
+            "8385": { nama: "JINGGA PRAMESTI ISWAHONO", kelas: "XI-6" },
+            "8391": { nama: "KARNEISHA ARSENAL WIBOWO", kelas: "XI-6" },
+            "8393": { nama: "KEZIA CIQUITA NAIRA", kelas: "XI-6" },
+            "8395": { nama: "KHAMZAH RAFIQI", kelas: "XI-6" },
+            "8402": { nama: "LAILY SADHINA EZRA PRATAMA", kelas: "XI-6" },
+            "8408": { nama: "M. DIMAS ZULHAM ALI BASYA", kelas: "XI-6" },
+            "8410": { nama: "M. VINO ARDIANSYAH", kelas: "XI-6" },
+            "8412": { nama: "MAHENDRA VIJAYA SUGIARTO", kelas: "XI-6" },
+            "8428": { nama: "MOCHAMMAD AMMAR IZZUDIN WAFIQ", kelas: "XI-6" },
+            "8441": { nama: "MUHAMMAD ARRAFI", kelas: "XI-6" },
+            "8454": { nama: "MUHAMMAD RAFI SYAWALUDIN", kelas: "XI-6" },
+            "8463": { nama: "MUKHAMMAD FAHRUL RISKIANTO", kelas: "XI-6" },
+            "8465": { nama: "MUTIARA CALLISTA ANINDYA", kelas: "XI-6" },
+            "8472": { nama: "NAJWA YAQUTA BAHMID", kelas: "XI-6" },
+            "8473": { nama: "NARARYA DEVIA NALINI", kelas: "XI-6" },
+            "8574": { nama: "RAHMA INDITIYA", kelas: "XI-6" },
+            "8507": { nama: "RAHMAT ADI PRASETYO", kelas: "XI-6" },
+            "8510": { nama: "RAYDA SALSABILA", kelas: "XI-6" },
+            "8515": { nama: "REVALINA TIARA DEVI", kelas: "XI-6" },
+            "8529": { nama: "SAFIYANA YUSRIYA", kelas: "XI-6" },
+            "8581": { nama: "SALSABIL QURROTU AINI", kelas: "XI-6" },
+            "8533": { nama: "SANASTASIA KINANTI", kelas: "XI-6" },
+            "8575": { nama: "SOFI MAULIDAH", kelas: "XI-6" },
+            "8546": { nama: "TYYA MARGARETA ASRIL", kelas: "XI-6" },
+            "8549": { nama: "VANIA IKA NUR FATIMAH", kelas: "XI-6" },
+            "8577": { nama: "ZULAIKHA ILMIRA", kelas: "XI-6" },
+            
+            // Kelas XI-7
+            "8254": { nama: "ABDULLOH MUKHYI", kelas: "XI-7" },
+            "8256": { nama: "ABILLA NUR ALFANDANI", kelas: "XI-7" },
+            "8260": { nama: "ADELFIO FADDEI AZHALLAH", kelas: "XI-7" },
+            "8580": { nama: "ADITYA RACHMA PAMUNGKAS", kelas: "XI-7" },
+            "8264": { nama: "ADNAN VINZA RUVIANTO", kelas: "XI-7" },
+            "8274": { nama: "AJENG INDRAMINARTI", kelas: "XI-7" },
+            "8285": { nama: "ALWI SHOLAKHUDIN ASY'ARI", kelas: "XI-7" },
+            "8298": { nama: "APRIAN ISNA FITRADAYUNAN", kelas: "XI-7" },
+            "8300": { nama: "ARINA KHOIRUN NISA'", kelas: "XI-7" },
+            "8568": { nama: "AYUDYA PUTRI RAMADANI", kelas: "XI-7" },
+            "8320": { nama: "BILLY WIRA PRAPTA", kelas: "XI-7" },
+            "8324": { nama: "CANTIKA LAILI NAFISA SYABELA", kelas: "XI-7" },
+            "8329": { nama: "CINDY PERMATA ADELIA SUKAMTO", kelas: "XI-7" },
+            "8339": { nama: "DEFI EKA MAULITA", kelas: "XI-7" },
+            "8342": { nama: "DEVIKA ARDA SALSABERA", kelas: "XI-7" },
+            "8347": { nama: "DITA DWI AYUDIA", kelas: "XI-7" },
+            "8364": { nama: "FAUZIYYAH RAHMATUL AMALIA PUTRI", kelas: "XI-7" },
+            "8371": { nama: "FIRDA LIBYANA", kelas: "XI-7" },
+            "8378": { nama: "IFTITA ITSNAINA AZZAHRA", kelas: "XI-7" },
+            "8380": { nama: "ISHA HABIBILLAH", kelas: "XI-7" },
+            "8392": { nama: "KEYLA DINAR ANANTA", kelas: "XI-7" },
+            "8401": { nama: "LAILI MAGHFIROH", kelas: "XI-7" },
+            "8417": { nama: "MAULANA RADITIYA SAPUTRA", kelas: "XI-7" },
+            "8419": { nama: "MAYRA AMELIA PUTRI SANTOSO", kelas: "XI-7" },
+            "8423": { nama: "MIFTAKUR ROHMA FITRIANSYAH", kelas: "XI-7" },
+            "8432": { nama: "MOH ANDRA PRASETYO", kelas: "XI-7" },
+            "8436": { nama: "MUHAMMAD AKBAR SINATRIYA", kelas: "XI-7" },
+            "8437": { nama: "MUHAMMAD AKMAL MUNIR", kelas: "XI-7" },
+            "8448": { nama: "MUHAMMAD HADID ROHMATULLAH", kelas: "XI-7" },
+            "8495": { nama: "ORBAR HASBILASYEH", kelas: "XI-7" },
+            "8508": { nama: "RANI DWI ARIYANTI", kelas: "XI-7" },
+            "8518": { nama: "RIEKE RIZMA MAGDALENA", kelas: "XI-7" },
+            "8520": { nama: "RIRID DYAH PURWANING RAHMATUL", kelas: "XI-7" },
+            "8527": { nama: "SAFIRA AFRYA NESA", kelas: "XI-7" },
+            "8551": { nama: "VONNY INDRIYANTI", kelas: "XI-7" },
+            "8558": { nama: "YOEL PURNOMO", kelas: "XI-7" },
+            
+            // Kelas XI-8
+            "8259": { nama: "ADE RIZKY NUR FADLILLAH", kelas: "XI-8" },
+            "8287": { nama: "AMILIA WAHONO", kelas: "XI-8" },
+            "8291": { nama: "ANDRA EGIDIA RAHMADANI", kelas: "XI-8" },
+            "8567": { nama: "ANGELINA SANJAYA", kelas: "XI-8" },
+            "8294": { nama: "ANGGUN MEILIA", kelas: "XI-8" },
+            "8302": { nama: "ARLETHA PUTRI LESTARI", kelas: "XI-8" },
+            "8304": { nama: "ARYA BIMA RADIANSYAH", kelas: "XI-8" },
+            "8306": { nama: "AULIA NURAZIZAH", kelas: "XI-8" },
+            "8330": { nama: "CINTA RAHMADHANI", kelas: "XI-8" },
+            "8565": { nama: "DEVRILYA PUTRI RAMADHANI", kelas: "XI-8" },
+            "8344": { nama: "DINDA ARIFAH", kelas: "XI-8" },
+            "8355": { nama: "EVA HAUNA KURNIAWATI", kelas: "XI-8" },
+            "8375": { nama: "GITA NUR AINI", kelas: "XI-8" },
+            "8384": { nama: "JESICA ANASTASYA HARDININGRUM", kelas: "XI-8" },
+            "8386": { nama: "JONATHAN ARFIKO KURNIAWAN", kelas: "XI-8" },
+            "8388": { nama: "JOVALIN AZMI ADINNATA", kelas: "XI-8" },
+            "8409": { nama: "M. NAUFAL ARDIANSYAH", kelas: "XI-8" },
+            "8411": { nama: "MAFAZA RISKY SALSABILA PUTRI", kelas: "XI-8" },
+            "8425": { nama: "MITA RINDIANI ASTARI", kelas: "XI-8" },
+            "8434": { nama: "MUHAMAD FAHRI ARIFFULLOH", kelas: "XI-8" },
+            "8446": { nama: "MUHAMMAD FAIZAL ABDILLAH SHIDDIQ", kelas: "XI-8" },
+            "8470": { nama: "NADIVA QOLBY RIANDYSA", kelas: "XI-8" },
+            "8484": { nama: "NEYSA RIYQY RAHMA DANI", kelas: "XI-8" },
+            "8494": { nama: "OKTAN RESKI ADITYA", kelas: "XI-8" },
+            "8496": { nama: "PUTRI ARFELI PRIBADI", kelas: "XI-8" },
+            "8504": { nama: "RAFI SAPUTRA", kelas: "XI-8" },
+            "8512": { nama: "REHANA ZEMMA ALDINIA VERARI", kelas: "XI-8" },
+            "8514": { nama: "RETA AULIA SALSABILA", kelas: "XI-8" },
+            "8521": { nama: "RIVALDO RAMA COKI ANDRIANTO", kelas: "XI-8" },
+            "8583": { nama: "SITI CHUMAIROH", kelas: "XI-8" },
+            "8539": { nama: "SYAHRINDRA ILHAM", kelas: "XI-8" },
+            "8541": { nama: "TALITA DWI KHUMAIRA", kelas: "XI-8" },
+            "8543": { nama: "TEGAR ARFIANTO", kelas: "XI-8" },
+            "8547": { nama: "UMARO ZUNIA RAMADHANI", kelas: "XI-8" },
+            "8554": { nama: "WINDYA POPY PRATIWI", kelas: "XI-8" },
+            "8560": { nama: "ZAHRA SABRINA PUTRI ARIANTO", kelas: "XI-8" },
+            
+            // Kelas XI-9
+            "8564": { nama: "ABIGAIL ADINE GANDES SAMBARANA", kelas: "XI-9" },
+            "8261": { nama: "ADIKA GHANI NURRIZKY", kelas: "XI-9" },
+            "8266": { nama: "AHMAD AZRIL IBRAHIM", kelas: "XI-9" },
+            "8288": { nama: "AMIRA MAGHFIROH FIRDAUZA", kelas: "XI-9" },
+            "8293": { nama: "ANGGI AMELIA", kelas: "XI-9" },
+            "8295": { nama: "ANGGUN SEPTIAN NINGRUM", kelas: "XI-9" },
+            "8311": { nama: "AVIF ZUDIS ARDIANSYAH", kelas: "XI-9" },
+            "8318": { nama: "BERNAD JALU JUNIOR", kelas: "XI-9" },
+            "8321": { nama: "BILQISTOSY CALISTA QUYIRNAFA", kelas: "XI-9" },
+            "8328": { nama: "CHELSI DWI CAHYA KIRANI", kelas: "XI-9" },
+            "8343": { nama: "DIANA DWI AZZAHRA", kelas: "XI-9" },
+            "8350": { nama: "DZIKRI ALIF BACHTIAR", kelas: "XI-9" },
+            "8354": { nama: "EMERALDA SEPTRIAMANDA", kelas: "XI-9" },
+            "8356": { nama: "FADIA RIZKIANA SAFIRA", kelas: "XI-9" },
+            "8362": { nama: "FARAH AULIA ZAHRA", kelas: "XI-9" },
+            "8373": { nama: "GALIH AJI SETIAWAN", kelas: "XI-9" },
+            "8438": { nama: "MUHAMMAD ALBI SYARIF", kelas: "XI-9" },
+            "8443": { nama: "MUHAMMAD ATHALLAH", kelas: "XI-9" },
+            "8457": { nama: "MUHAMMAD RIZQI ADITIA", kelas: "XI-9" },
+            "8468": { nama: "NADIN HERLITA FRIDIANA", kelas: "XI-9" },
+            "8482": { nama: "NESHIA AMELIA PUTRI", kelas: "XI-9" },
+            "8486": { nama: "NILA AMALIA NABILA", kelas: "XI-9" },
+            "8489": { nama: "NOVITA DAMAYANTI", kelas: "XI-9" },
+            "8492": { nama: "NUR KHALILAH JABIRAH", kelas: "XI-9" },
+            "8501": { nama: "RACHELANANTA NOR KHAFIDHO", kelas: "XI-9" },
+            "8525": { nama: "ROCHMATUL MAGFIROH", kelas: "XI-9" },
+            "8526": { nama: "ROSITA DEWI", kelas: "XI-9" },
+            "8536": { nama: "SISCA ZAHROTUL JANNAH", kelas: "XI-9" },
+            "8537": { nama: "SITI KHUMAYROH", kelas: "XI-9" },
+            "8545": { nama: "TITAH NUNINGSIH MAYUN MAHA DEWI", kelas: "XI-9" },
+            "8550": { nama: "VIRSA NUR FITRIA", kelas: "XI-9" },
+            "8552": { nama: "WANDA DWI RAHAYU AGUSTIN", kelas: "XI-9" },
+            "8555": { nama: "WISNU PRITAMA", kelas: "XI-9" },
+            "8563": { nama: "ZIANCA ZUBIZZARETA", kelas: "XI-9" },
+            
+            // Kelas XII-1
+            "7940": { nama: "AHMAD IKLIL NURKHOTIM", kelas: "XII-1" },
+            "7941": { nama: "AHMAD RAFI MAULANA VITJAYANTO", kelas: "XII-1" },
+            "7956": { nama: "ALVIN MAULANA ACHMAD NAJIB", kelas: "XII-1" },
+            "7959": { nama: "AMELIA AZZARAH", kelas: "XII-1" },
+            "7962": { nama: "ANATASYA SHOLYFATUS SAFIRA", kelas: "XII-1" },
+            "7967": { nama: "ANGELINA WIDYASTARY", kelas: "XII-1" },
+            "7978": { nama: "BILLY ARYA WARDANA", kelas: "XII-1" },
+            "7992": { nama: "DAIFINA FEBRIANTI", kelas: "XII-1" },
+            "8001": { nama: "DIVA PARAMITA", kelas: "XII-1" },
+            "8011": { nama: "ELSAFIRA PUTRI HERLISIA", kelas: "XII-1" },
+            "8013": { nama: "ERWIN WIDJAYA ACHMAD", kelas: "XII-1" },
+            "8014": { nama: "FAHMI SAPUTRA", kelas: "XII-1" },
+            "8021": { nama: "FARHAN RAMADHANI", kelas: "XII-1" },
+            "8025": { nama: "FATIAN OKTAVIAN RAMADHAN", kelas: "XII-1" },
+            "8029": { nama: "FERY ARDIANSYAH", kelas: "XII-1" },
+            "8065": { nama: "KING ABDUL AZIZ", kelas: "XII-1" },
+            "8079": { nama: "MAHARDIKA SETIAWAN", kelas: "XII-1" },
+            "8086": { nama: "MELGA AURIEL WANDIRA", kelas: "XII-1" },
+            "8089": { nama: "MICHAEL WICAKSONO", kelas: "XII-1" },
+            "8107": { nama: "MUHAMAD MICO PRATAMA", kelas: "XII-1" },
+            "8142": { nama: "NAURA CANDRANINGTIAS", kelas: "XII-1" },
+            "8148": { nama: "NINO WAHYU PRASTYO", kelas: "XII-1" },
+            "8253": { nama: "NOVEDIAN NADYA FAUZIAH", kelas: "XII-1" },
+            "8155": { nama: "NUREISY EGA FELISIENA", kelas: "XII-1" },
+            "8156": { nama: "NURUL FADHILAH", kelas: "XII-1" },
+            "8160": { nama: "PRITA ANDARA SANTOSO", kelas: "XII-1" },
+            "8165": { nama: "QYARA YURYCO AYUDIA", kelas: "XII-1" },
+            "8173": { nama: "RAKA SIWI PARVEZ ZIYADATULLAH", kelas: "XII-1" },
+            "8181": { nama: "REGITHA NOVALIZA UNIQO SUWARDHANI", kelas: "XII-1" },
+            "8197": { nama: "RIRIF FAUNIBA SALWA", kelas: "XII-1" },
+            "8201": { nama: "RIZAL HAFID GHIMNATSYAR", kelas: "XII-1" },
+            "8217": { nama: "SEFANYA MARGARETHA WIBOWO", kelas: "XII-1" },
+            "8223": { nama: "SINTA LAURA AZZARIA", kelas: "XII-1" },
+            "8232": { nama: "TIKA FITROTUN NASICHA", kelas: "XII-1" },
+            "8245": { nama: "YUNIKE WAHYU KRISTANTI", kelas: "XII-1" },
+            "8247": { nama: "ZELLIA FATIMATUZ ZAHRO", kelas: "XII-1" },
+            
+            // Kelas XII-2
+            "7929": { nama: "ADAM YOGA PRATAMA", kelas: "XII-2" },
+            "7931": { nama: "ADENIA DWI ADISTIA", kelas: "XII-2" },
+            "7937": { nama: "AHMAD AFIF", kelas: "XII-2" },
+            "7949": { nama: "ALFINA CAHYA KHAIRINA", kelas: "XII-2" },
+            "7955": { nama: "ALLRIAN ABDI WIRANATA", kelas: "XII-2" },
+            "7964": { nama: "ANDINI ARIFKA PUTRI", kelas: "XII-2" },
+            "7965": { nama: "ANGEL LILIN HERAWATI", kelas: "XII-2" },
+            "7966": { nama: "ANGELIA DWI YANTI", kelas: "XII-2" },
+            "7970": { nama: "ARDELIA MANDA NUR ALYSIA", kelas: "XII-2" },
+            "7984": { nama: "CHECILIA KHANZA NATANIA CAHYADI", kelas: "XII-2" },
+            "7990": { nama: "CITRA AYU LESTARI", kelas: "XII-2" },
+            "7993": { nama: "DECHA NURIL WAHIDAH", kelas: "XII-2" },
+            "8000": { nama: "DINDA AULIA EL ZAHRA", kelas: "XII-2" },
+            "8007": { nama: "EGA JULIAN NINDA", kelas: "XII-2" },
+            "8012": { nama: "ELVIORA NAVRATILOVA REVIANTI", kelas: "XII-2" },
+            "8017": { nama: "FAIZ RIZKY RAMADHANI", kelas: "XII-2" },
+            "8027": { nama: "FELISHA NADYA FARADIKA", kelas: "XII-2" },
+            "8028": { nama: "FELLIN MULIA RAMADHANI", kelas: "XII-2" },
+            "8038": { nama: "GLADYS SHYAGITA ADYSTI", kelas: "XII-2" },
+            "8039": { nama: "GRISELDA RAVINA ZAHIRA", kelas: "XII-2" },
+            "8042": { nama: "ICHA ARTA MAEIWA", kelas: "XII-2" },
+            "8060": { nama: "KEYLA MINAHUSANIA", kelas: "XII-2" },
+            "8062": { nama: "KEZIA PUTRI MAHESWARI", kelas: "XII-2" },
+            "8077": { nama: "M. ZIDANE FAHLEVI EFFENDI", kelas: "XII-2" },
+            "8099": { nama: "MOHAMMAD BAGUS DWI ANDHIKA", kelas: "XII-2" },
+            "8100": { nama: "MOHAMMAD NIZAR PUTRA IRAWAN", kelas: "XII-2" },
+            "8124": { nama: "MUTIA AMANDA RAZZAQEE", kelas: "XII-2" },
+            "8125": { nama: "MUTYA AZZAHRA", kelas: "XII-2" },
+            "8145": { nama: "NAYLA RIZKY AUFAR", kelas: "XII-2" },
+            "8151": { nama: "NOVITA ELIZA LOIDA DAMANIK", kelas: "XII-2" },
+            "8157": { nama: "OKTAVYARA MAURETTA AZZAHWA", kelas: "XII-2" },
+            "8172": { nama: "RAISYA NABILA BINTANG AZ-ZAHRA", kelas: "XII-2" },
+            "8214": { nama: "SAVEERO EXCEL NIKIOBI", kelas: "XII-2" },
+            "8222": { nama: "SINDI KAILA NISA", kelas: "XII-2" },
+            "8227": { nama: "SYAH FANA PELANGI", kelas: "XII-2" },
+            "8236": { nama: "VEGA GHARIZAH CAHYAPUTRI", kelas: "XII-2" },
+            
+            // Kelas XII-3
+            "7928": { nama: "ACMAD ABBRAR RAHMATULLAH", kelas: "XII-3" },
+            "7932": { nama: "ADINDA NIRWIKARA", kelas: "XII-3" },
+            "7936": { nama: "AGENG PRABOWO", kelas: "XII-3" },
+            "7981": { nama: "CAHYA IZATUL MAGFIROH", kelas: "XII-3" },
+            "7988": { nama: "CIKA MAUIDHOTUL LATIFAH", kelas: "XII-3" },
+            "7999": { nama: "DINA OLIVIA FEBRIANTI", kelas: "XII-3" },
+            "8033": { nama: "FITRA RAFI PRATAMA", kelas: "XII-3" },
+            "8041": { nama: "HILYATU'UMAIROH", kelas: "XII-3" },
+            "8057": { nama: "KEIZSYAFFIRA RAMADHANI", kelas: "XII-3" },
+            "8059": { nama: "KEYLA CINDY ANASTASYA JUNIAR", kelas: "XII-3" },
+            "8088": { nama: "MEYLANI ABDINA PUTRI", kelas: "XII-3" },
+            "8101": { nama: "MOHAMMAD ZAHY FAKHRUDDIN AKMAL", kelas: "XII-3" },
+            "8122": { nama: "MUCHAMAD SYAKA FAHRIAL", kelas: "XII-3" },
+            "8105": { nama: "MUHAMAD FIQOH", kelas: "XII-3" },
+            "8114": { nama: "MUHAMMAD HAIDAR AMRUDIN", kelas: "XII-3" },
+            "8117": { nama: "MUHAMMAD ISYROFUDDIN", kelas: "XII-3" },
+            "8119": { nama: "MUHAMMAD RIFAT ZAHSIR", kelas: "XII-3" },
+            "8120": { nama: "MUHAMMAD RIFFAT BHANURASMI", kelas: "XII-3" },
+            "8129": { nama: "NABILA JANNATUL FIRDAUS", kelas: "XII-3" },
+            "8135": { nama: "NANDA RISMA AROFATUL ULLA", kelas: "XII-3" },
+            "8136": { nama: "NASHIRUDIN ARAFAT", kelas: "XII-3" },
+            "8137": { nama: "NASYA PRIMASYITHAH", kelas: "XII-3" },
+            "8140": { nama: "NATSWADISYA YAFI'AH ARDIVA", kelas: "XII-3" },
+            "8146": { nama: "NAZIVA YUDYA ISTIANA", kelas: "XII-3" },
+            "8167": { nama: "RAFFI MAULIDAN RAHMADANI PUTRA", kelas: "XII-3" },
+            "8174": { nama: "RAMA MAULANA RAMADANI", kelas: "XII-3" },
+            "8180": { nama: "REGAN SYARIF RIFA'I", kelas: "XII-3" },
+            "8182": { nama: "REHANA NABILLA", kelas: "XII-3" },
+            "8186": { nama: "RENY AGUSTINA DEWI", kelas: "XII-3" },
+            "8189": { nama: "REVALINA RAHMA DANIA", kelas: "XII-3" },
+            "8191": { nama: "REVASYA NAURAH SYAHIRAH", kelas: "XII-3" },
+            "8192": { nama: "REVINA OKTA RAMADINI", kelas: "XII-3" },
+            "8204": { nama: "ROFIATUZ ZULAIKHA", kelas: "XII-3" },
+            "8219": { nama: "SEPTIA AULIA SALSA SADANA", kelas: "XII-3" },
+            "8228": { nama: "TALITA MEISA AYU", kelas: "XII-3" },
+            "8235": { nama: "UMAR AJI PRASETYA", kelas: "XII-3" },
+            
+            // Kelas XII-4
+            "7934": { nama: "ADIYATMA NUGRAHA LOKISWARA", kelas: "XII-4" },
+            "7945": { nama: "AILA AZURA", kelas: "XII-4" },
+            "7950": { nama: "ALIF SURYA SOMA", kelas: "XII-4" },
+            "7953": { nama: "ALIYAH ZAHIR FIRDAUS", kelas: "XII-4" },
+            "7960": { nama: "ANANDA ARLAN NABILA PUTRI", kelas: "XII-4" },
+            "7989": { nama: "CINTA LARASATI SAFITRI", kelas: "XII-4" },
+            "7994": { nama: "DEFRINZA QEISYA AZZAHRA", kelas: "XII-4" },
+            "7997": { nama: "DIAS THALULA TAYANSYA", kelas: "XII-4" },
+            "8018": { nama: "FANESTA RIZKY ANDIKA", kelas: "XII-4" },
+            "8035": { nama: "GHINATA LUBNAFISA", kelas: "XII-4" },
+            "8043": { nama: "ICHA RIZKY RAMADHANI", kelas: "XII-4" },
+            "8055": { nama: "KANIA INDIRA CAROLINA", kelas: "XII-4" },
+            "8058": { nama: "KENSIWI", kelas: "XII-4" },
+            "8071": { nama: "LOIS FERNANDO", kelas: "XII-4" },
+            "8075": { nama: "M. FAHRI FATKHUR MUHTADIN", kelas: "XII-4" },
+            "8076": { nama: "M. LUTHFI AZIZ MAULANA", kelas: "XII-4" },
+            "8090": { nama: "MIKHAIL ARMANIA YUSUF", kelas: "XII-4" },
+            "8106": { nama: "MUHAMAD IBNU SABIL", kelas: "XII-4" },
+            "8113": { nama: "MUHAMMAD FIQRI ALI WAHYUDI", kelas: "XII-4" },
+            "8121": { nama: "MUHAMMAD ROZZAQUL KARIM", kelas: "XII-4" },
+            "8133": { nama: "NAJMI GARDAPATI", kelas: "XII-4" },
+            "8139": { nama: "NATASYA ECHA AULIA WAHYUDI", kelas: "XII-4" },
+            "8147": { nama: "NESYA RAHMA DESAMBRIA", kelas: "XII-4" },
+            "8153": { nama: "NUR KHUSNA ROHMANIA", kelas: "XII-4" },
+            "8161": { nama: "PUTRI ANNISWATUS SHOLIKHAH", kelas: "XII-4" },
+            "8177": { nama: "RANIA PUTRI AURELLIA", kelas: "XII-4" },
+            "8184": { nama: "RENATA PUTRI LARASATI", kelas: "XII-4" },
+            "8185": { nama: "RENO FAJARYANTO", kelas: "XII-4" },
+            "8195": { nama: "RIFQYA DWI JUANITA", kelas: "XII-4" },
+            "8206": { nama: "Rr. ERLIANA SHINTA AYU DEWANTARI", kelas: "XII-4" },
+            "8207": { nama: "RYAN FAJAR MAULANA", kelas: "XII-4" },
+            "8213": { nama: "SATRIO BAGASA", kelas: "XII-4" },
+            "8224": { nama: "SITI CHAIRUNNISA'", kelas: "XII-4" },
+            "8226": { nama: "STANISLAS KOSTKA ROFEL BAGAS SANJAYA", kelas: "XII-4" },
+            "8229": { nama: "TAZKIA AULIA FADELINA", kelas: "XII-4" },
+            "8234": { nama: "ULFI NOVIYANTI MAGHFIROH", kelas: "XII-4" },
+            
+            // Kelas XII-5
+            "7930": { nama: "ADE ZAFFA YUDHA PRASETIYO", kelas: "XII-5" },
+            "7939": { nama: "AHMAD HANIF ALQOWI", kelas: "XII-5" },
+            "7942": { nama: "AHMAD SARIFUDIN", kelas: "XII-5" },
+            "7944": { nama: "AIGA SA'BANI ACHMAD RIZQI", kelas: "XII-5" },
+            "7951": { nama: "ALIQA NURAISYAH RAMADHANI", kelas: "XII-5" },
+            "7954": { nama: "ALLISA SAYYIDAH AZZAHRA", kelas: "XII-5" },
+            "7957": { nama: "ALVINA DINDA ARDIKA", kelas: "XII-5" },
+            "7963": { nama: "ANDHIKA BUDI PRATAMA", kelas: "XII-5" },
+            "7977": { nama: "BAGUS SETIAWAN DWI ARIFIN", kelas: "XII-5" },
+            "7991": { nama: "DAFFA FAHREZA YANUAR HAFIDZ", kelas: "XII-5" },
+            "7996": { nama: "DESTA MAULANA CATUR PAMUNGKAS", kelas: "XII-5" },
+            "8005": { nama: "DYANTI RYHANNA NAYA", kelas: "XII-5" },
+            "8006": { nama: "DZAKIA BILQIS DZALFA", kelas: "XII-5" },
+            "8009": { nama: "ELFIRA SAERASARI RAHAYU", kelas: "XII-5" },
+            "8022": { nama: "FARIEL AFRIZA AZRA", kelas: "XII-5" },
+            "8034": { nama: "FRADITA WULAN NINGSIH", kelas: "XII-5" },
+            "8040": { nama: "HERNANDO PUTRA YHOSETA", kelas: "XII-5" },
+            "8045": { nama: "INAYA KASIH RAMADHAN", kelas: "XII-5" },
+            "8056": { nama: "KARISTA LEVINA DIAN AGUSTIN", kelas: "XII-5" },
+            "8069": { nama: "LINTANG NINGTYAS HIMMATUL ULYA", kelas: "XII-5" },
+            "8073": { nama: "M. AKBAR RIZKY HIDAYAT", kelas: "XII-5" },
+            "8078": { nama: "M. ZUHAL KAUKAB", kelas: "XII-5" },
+            "8080": { nama: "MAIDHIVA GABRIELLA MAHARANI", kelas: "XII-5" },
+            "8084": { nama: "MAULANA SUNANTRIA AMRULLOH", kelas: "XII-5" },
+            "8093": { nama: "MOCHAMAD NAUFAL NAFIS ZUHAYR", kelas: "XII-5" },
+            "8097": { nama: "MOH. RANGGA BAYU ANANDA", kelas: "XII-5" },
+            "8103": { nama: "MONICA PUTRI MARCHAMTI", kelas: "XII-5" },
+            "8126": { nama: "MYCELLO THREETALENT", kelas: "XII-5" },
+            "8143": { nama: "NAURA SIDHAN RACHEL LAVERDA", kelas: "XII-5" },
+            "8171": { nama: "RAISSA SAHDA ARLADIN", kelas: "XII-5" },
+            "8183": { nama: "REIHANA ZAHRANI SISWANTO", kelas: "XII-5" },
+            "8190": { nama: "REVALINA WIDYA CAHYANI PUTRI", kelas: "XII-5" },
+            "8203": { nama: "RIZKY DWI SUGIYATNO", kelas: "XII-5" },
+            "8220": { nama: "SHAFITRI RAHMA WATI", kelas: "XII-5" },
+            "8225": { nama: "SITI ROSYIDA SOFWATUL UMMA", kelas: "XII-5" },
+            "8242": { nama: "YOGA PRASETYO", kelas: "XII-5" },
+            
+            // Kelas XII-6
+            "7933": { nama: "ADITYA FAZA ILMANSYAH", kelas: "XII-6" },
+            "7938": { nama: "AHMAD FEBRIANO ZAHRI", kelas: "XII-6" },
+            "7972": { nama: "ASLEKHA WAHYUNING MEILANI PUTRI", kelas: "XII-6" },
+            "7974": { nama: "AURA SALSA RAMADHANI", kelas: "XII-6" },
+            "7979": { nama: "BINTANG BAGUS SAPUTRO", kelas: "XII-6" },
+            "8003": { nama: "DURROTUN NASIKHAH", kelas: "XII-6" },
+            "8023": { nama: "FARISA PUTRI WIDODO", kelas: "XII-6" },
+            "8030": { nama: "FIKRI ALIF SABILI PUTRA", kelas: "XII-6" },
+            "8046": { nama: "INDARTI RAHMASARI", kelas: "XII-6" },
+            "8047": { nama: "INNANI ZAHRA", kelas: "XII-6" },
+            "8049": { nama: "IRSANIA DWI PRAMITA", kelas: "XII-6" },
+            "8050": { nama: "IZZATYA NUR'AINI AZ ZAHRA", kelas: "XII-6" },
+            "8052": { nama: "JELITA VERINDYA RIZQITA PUTRI SURYA", kelas: "XII-6" },
+            "8053": { nama: "JOHANNA DIVA ARABELLA", kelas: "XII-6" },
+            "8061": { nama: "KEYLILAH ZAHRAINY PUTRI RISWANTO", kelas: "XII-6" },
+            "8072": { nama: "M AINUL YAQIN", kelas: "XII-6" },
+            "8102": { nama: "MOHAMMAT FEBRI AMIRULLOH", kelas: "XII-6" },
+            "8109": { nama: "MUHAMMAD ALMAN ARIEF ABDALLAH", kelas: "XII-6" },
+            "8110": { nama: "MUHAMMAD AMIR FIRJATULLOH", kelas: "XII-6" },
+            "8116": { nama: "MUHAMMAD ILHAMSYAH WAHYU HIDAYATULLOH", kelas: "XII-6" },
+            "8123": { nama: "MUHAMMAD ZIDANE ULUL AZMI", kelas: "XII-6" },
+            "8127": { nama: "NABIL BIMARADANA", kelas: "XII-6" },
+            "8132": { nama: "NAIRA FADILAH", kelas: "XII-6" },
+            "8138": { nama: "NATASA WIDYA", kelas: "XII-6" },
+            "8162": { nama: "PUTRI BILQIST AURA MAGHFIROH", kelas: "XII-6" },
+            "8164": { nama: "PUTRI SALSABILA", kelas: "XII-6" },
+            "8175": { nama: "RAMA PRASETYO", kelas: "XII-6" },
+            "8176": { nama: "RANDY ARDIANSAH SETYAWAN", kelas: "XII-6" },
+            "8187": { nama: "RERA OKTALIA NUR'ABIDAH", kelas: "XII-6" },
+            "8193": { nama: "RIANG AFISA SALSABILA", kelas: "XII-6" },
+            "8194": { nama: "RIFKA AMELIA RAMDHANI", kelas: "XII-6" },
+            "8215": { nama: "SAVIRA HURIN IIN", kelas: "XII-6" },
+            "8230": { nama: "THESSA NILAM VIDIANTO", kelas: "XII-6" },
+            "8237": { nama: "VIRA KHARISMA", kelas: "XII-6" },
+            "8241": { nama: "WINDA AULIA WULANDARI", kelas: "XII-6" },
+            "8244": { nama: "YOLANDA FEBRIYANS SALSABILAH", kelas: "XII-6" },
+            
+            // Kelas XII-7
+            "7926": { nama: "ACHMAD DWI ALVIAN", kelas: "XII-7" },
+            "7927": { nama: "ACHMAD FAISAL AYA TULLOH", kelas: "XII-7" },
+            "7952": { nama: "ALISHA CINTYA HERLAMBANG", kelas: "XII-7" },
+            "7973": { nama: "ATIGO ZAKATI SASAMI", kelas: "XII-7" },
+            "7983": { nama: "CANTIK AKHIDAH MUKASABAH", kelas: "XII-7" },
+            "7985": { nama: "CHEYLA FEBBY FAGITA", kelas: "XII-7" },
+            "7986": { nama: "CHRISTIAN ARFANDO DARMA PUTRA", kelas: "XII-7" },
+            "7987": { nama: "CHRISTIAN IRFANDI DARMA PUTRA", kelas: "XII-7" },
+            "8036": { nama: "GILANG RAHMADAN", kelas: "XII-7" },
+            "8044": { nama: "ILMIYA NUR AZIZAH", kelas: "XII-7" },
+            "8048": { nama: "IRFAN FANANI", kelas: "XII-7" },
+            "8579": { nama: "KEYLA SABRINA", kelas: "XII-7" },
+            "8070": { nama: "LINTANG PRAMADA APRIANSYAH", kelas: "XII-7" },
+            "8074": { nama: "M. ALFREDO ANDIKA RAMADAN", kelas: "XII-7" },
+            "8091": { nama: "MOCHAMAD ARIL SETIAWAN", kelas: "XII-7" },
+            "8092": { nama: "MOCHAMAD BAHRUL HELMI", kelas: "XII-7" },
+            "8094": { nama: "MOCHAMMAD REYVANO PHALEVI", kelas: "XII-7" },
+            "8098": { nama: "MOHAMAD RAFIAN JULIANSYAH", kelas: "XII-7" },
+            "8104": { nama: "MUCHAMMAD ABIDZAR RIFAN", kelas: "XII-7" },
+            "8108": { nama: "MUHAMMAD ALFARIZQI", kelas: "XII-7" },
+            "8112": { nama: "MUHAMMAD FARID HAKIM AFERY", kelas: "XII-7" },
+            "8152": { nama: "NUR AZIZAH", kelas: "XII-7" },
+            "8163": { nama: "PUTRI MAHARDIKA SLAMET ABRIANTI", kelas: "XII-7" },
+            "8168": { nama: "RAFFLY MUKTI AURIEL ANWAR", kelas: "XII-7" },
+            "8198": { nama: "RISKA ISMAWAR DANI", kelas: "XII-7" },
+            "8199": { nama: "RISMA AULIYA MAHARANI", kelas: "XII-7" },
+            "8212": { nama: "SALWA FANESA AGUSTIN PUTRI HERMAWAN", kelas: "XII-7" },
+            "8221": { nama: "SINDA NEFIKA ARIANI", kelas: "XII-7" },
+            "8238": { nama: "WAHYU RAMADHANI", kelas: "XII-7" },
+            "8239": { nama: "WAHYU SAPUTRA", kelas: "XII-7" },
+            "8240": { nama: "WAHYU SURYA PERMANA", kelas: "XII-7" },
+            "7904": { nama: "WISNU RAHMAT RAHARJA", kelas: "XII-7" },
+            "8243": { nama: "YOLANDA APRISA PUTRI", kelas: "XII-7" },
+            "8246": { nama: "ZAFAR SHODIQ HIDAYATULLOH", kelas: "XII-7" },
+            "8248": { nama: "ZERYCO ADI PRATAMA", kelas: "XII-7" },
+            
+            // Kelas XII-8
+            "7961": { nama: "ANANDA RAMADHANI", kelas: "XII-8" },
+            "7968": { nama: "ANGGUN PUTRI DAVINA", kelas: "XII-8" },
+            "7969": { nama: "ANNA RAHMA WIDY ATIKA", kelas: "XII-8" },
+            "7971": { nama: "ARLETTA AZKA MAISYA", kelas: "XII-8" },
+            "7982": { nama: "CANDRA PUJI LESTARI", kelas: "XII-8" },
+            "8002": { nama: "DIWAN EPRIAN AMRULLOH", kelas: "XII-8" },
+            "8008": { nama: "EKA LAILATUL RAHMA DHANI", kelas: "XII-8" },
+            "8010": { nama: "ELISA NUR WIJAYA", kelas: "XII-8" },
+            "8016": { nama: "FAIRUZ SA'ADAH FATIMATUS ZAHRO", kelas: "XII-8" },
+            "8031": { nama: "FIONA PUTRI ANASTASYA", kelas: "XII-8" },
+            "8063": { nama: "KHOIRUN NISAK", kelas: "XII-8" },
+            "8066": { nama: "LAILI NUR OCTAVIA", kelas: "XII-8" },
+            "8067": { nama: "LAURA KHOIRUN NISA'", kelas: "XII-8" },
+            "8068": { nama: "LIFY NABILA SUSANTO", kelas: "XII-8" },
+            "8082": { nama: "MASAYU DEWI LAILLYA", kelas: "XII-8" },
+            "8083": { nama: "MASULAH", kelas: "XII-8" },
+            "8085": { nama: "MAVELLA RAHMALIA ANDINI", kelas: "XII-8" },
+            "8087": { nama: "MEYDA RISTIANTI", kelas: "XII-8" },
+            "8095": { nama: "MOCHAMMAD RIZQI ALFAJARY", kelas: "XII-8" },
+            "8115": { nama: "MUHAMMAD ILHAM FIRJATULLAH", kelas: "XII-8" },
+            "8118": { nama: "MUHAMMAD RAJIB ADITYA", kelas: "XII-8" },
+            "8134": { nama: "NAKAYSHA HANUM RAHMADANIA", kelas: "XII-8" },
+            "8141": { nama: "NAUFAL AZKA HIBATULLOH", kelas: "XII-8" },
+            "8149": { nama: "NIZAR RAZZANI MEICHA SARI", kelas: "XII-8" },
+            "8150": { nama: "NOVA WAHYU PRATAMA", kelas: "XII-8" },
+            "8158": { nama: "PANDU PUTRA PRATAMA", kelas: "XII-8" },
+            "8170": { nama: "RAGIL BAGUS SETIAWAN", kelas: "XII-8" },
+            "8178": { nama: "REBECCA AZALIA AWWALUN FITRI HERMAWAN", kelas: "XII-8" },
+            "8188": { nama: "REVALINA AZZARA SIRI", kelas: "XII-8" },
+            "8196": { nama: "RINA FITRI NUR AISYAH", kelas: "XII-8" },
+            "8205": { nama: "ROMANCE VILLARAIN ANANDA", kelas: "XII-8" },
+            "8209": { nama: "SALSA MARSELINA", kelas: "XII-8" },
+            "8216": { nama: "SAVIRA SYAHROTUSITA EFENDI", kelas: "XII-8" },
+            "8231": { nama: "THOMAS SUGIARTO", kelas: "XII-8" },
+            "8233": { nama: "TIZATO VICO BERLIANO", kelas: "XII-8" },
+            "8249": { nama: "ZESSI NADFIATUL MAULIDAH", kelas: "XII-8" },
+            
+            // Kelas XII-9
+            "7943": { nama: "AHSANUN NISA'", kelas: "XII-9" },
+            "7947": { nama: "AJFA KHALISHAH SALSABILA", kelas: "XII-9" },
+            "7948": { nama: "AKHMAD FADELY ADITIYA", kelas: "XII-9" },
+            "7975": { nama: "BAGUS ADYTYA FAIZUL CHAQ", kelas: "XII-9" },
+            "7980": { nama: "BAGUS PRAYOGA", kelas: "XII-9" },
+            "7995": { nama: "CAHAYU RAHMAWATIN", kelas: "XII-9" },
+            "7998": { nama: "DENDY PUTRA RAMADHAN", kelas: "XII-9" },
+            "8004": { nama: "DIMAS WAHYU FIRMANSAH", kelas: "XII-9" },
+            "8015": { nama: "DWI FERDIANSAH", kelas: "XII-9" },
+            "8019": { nama: "FAHRI ADITYA", kelas: "XII-9" },
+            "8020": { nama: "FARA FAUZIAH", kelas: "XII-9" },
+            "8024": { nama: "FARDAN MUWAFFAQ AL RUMI", kelas: "XII-9" },
+            "8026": { nama: "FARSA NATHA EGALITA", kelas: "XII-9" },
+            "8032": { nama: "FEBITA AULIA SAFITRI", kelas: "XII-9" },
+            "8037": { nama: "FISA AYU EFENI", kelas: "XII-9" },
+            "8051": { nama: "GITA AYU PRAMESWARI", kelas: "XII-9" },
+            "8054": { nama: "JELITA KUSUMA WARDANI", kelas: "XII-9" },
+            "8064": { nama: "JONATHAN HAREN RISDO DAMANIK", kelas: "XII-9" },
+            "8081": { nama: "KIKI RAHMAWATI", kelas: "XII-9" },
+            "8096": { nama: "MARATUS SOLIKHA", kelas: "XII-9" },
+            "8111": { nama: "MOH. FAHRI MEYDIANSYAH", kelas: "XII-9" },
+            "8128": { nama: "MUHAMMAD DAVA DWI ARDIANSYAH", kelas: "XII-9" },
+            "8130": { nama: "NABIL MAULANA SETIAWAN", kelas: "XII-9" },
+            "8131": { nama: "NADELIA VEGA FISABRINA", kelas: "XII-9" },
+            "8144": { nama: "NAILA SEPTYA RAMADHANI", kelas: "XII-9" },
+            "8159": { nama: "NURDIANTI ALINNUHA NISABILA", kelas: "XII-9" },
+            "8166": { nama: "PRISCILLA ANASTASYA", kelas: "XII-9" },
+            "8169": { nama: "RADIT RACHMAT ROZIKIN", kelas: "XII-9" },
+            "8179": { nama: "RAFLI ADE WALUYO", kelas: "XII-9" },
+            "8200": { nama: "REFA CAHYANDRA MAULINA", kelas: "XII-9" },
+            "8208": { nama: "RISTANTI MAHIRA PUTRI", kelas: "XII-9" },
+            "8210": { nama: "SABRINA AURORA PUTRI CANTIKA", kelas: "XII-9" },
+            "8211": { nama: "SALSABILA AMANDA", kelas: "XII-9" },
+            "8218": { nama: "SALWA DZAHAH ARIELLA", kelas: "XII-9" },
+            "7976": { nama: "SEFIA BELITA PUTRI", kelas: "XII-9" },
+        };
+
+        const ADMIN_PASSWORD = "styleright2025";
+        let isAdminLoggedIn = false;
+        let allRecords = [];
+        let currentRecordCount = 0;
+
+        const defaultConfig = {
+            judul_sistem: "STYLE RIGHT",
+            tahun_ajaran: "2025/2026",
+            nama_sekolah: "SMAN MOJOAGUNG",
+            subtitle: "Sistem Data Kedisiplinan Siswa",
+            primary_color: "#1e3c72",
+            secondary_color: "#7e22ce",
+            text_color: "#333333",
+            background_start: "#1e3c72",
+            background_end: "#7e22ce"
+        };
+
+        const dataHandler = {
+            onDataChanged(data) {
+                allRecords = data;
+                currentRecordCount = data.length;
+                if (isAdminLoggedIn) {
+                    updateRekap();
+                    updateAdminRekap();
+                }
+            }
+        };
+
+        async function initializeApp() {
+            if (window.dataSdk) {
+                const initResult = await window.dataSdk.init(dataHandler);
+                if (!initResult.isOk) {
+                    showToast('Gagal menginisialisasi sistem', 'error');
+                }
+            }
+
+            if (window.elementSdk) {
+                window.elementSdk.init({
+                    defaultConfig: defaultConfig,
+                    onConfigChange: async (config) => {
+                        const judulSistem = config.judul_sistem || defaultConfig.judul_sistem;
+                        const tahunAjaran = config.tahun_ajaran || defaultConfig.tahun_ajaran;
+                        const namaSekolah = config.nama_sekolah || defaultConfig.nama_sekolah;
+                        const subtitle = config.subtitle || defaultConfig.subtitle;
+                        const primaryColor = config.primary_color || defaultConfig.primary_color;
+                        const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+                        const textColor = config.text_color || defaultConfig.text_color;
+                        const backgroundStart = config.background_start || defaultConfig.background_start;
+                        const backgroundEnd = config.background_end || defaultConfig.background_end;
+
+                        document.getElementById('judul-sistem').textContent = judulSistem;
+                        document.getElementById('tahun-ajaran').textContent = tahunAjaran;
+                        document.getElementById('nama-sekolah').textContent = namaSekolah;
+                        document.getElementById('subtitle').textContent = subtitle;
+
+                        document.querySelector('.header h1').style.color = primaryColor;
+                        document.body.style.background = `linear-gradient(135deg, ${backgroundStart} 0%, ${backgroundEnd} 50%, ${secondaryColor} 100%)`;
+                        
+                        const statCards = document.querySelectorAll('.stat-card');
+                        statCards.forEach(card => {
+                            card.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+                        });
+
+                        const buttons = document.querySelectorAll('.btn');
+                        buttons.forEach(btn => {
+                            btn.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+                        });
+
+                        document.querySelectorAll('.tab-btn.active').forEach(btn => {
+                            btn.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+                        });
+
+                        document.querySelector('.badge').style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+                        document.querySelector('.floating-icon').style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+                        document.querySelector('.help-button').style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+
+                        document.querySelectorAll('.record-name, .rekap-name, h2').forEach(el => {
+                            el.style.color = primaryColor;
+                        });
+                    },
+                    mapToCapabilities: (config) => ({
+                        recolorables: [
+                            {
+                                get: () => config.primary_color || defaultConfig.primary_color,
+                                set: (value) => {
+                                    window.elementSdk.config.primary_color = value;
+                                    window.elementSdk.setConfig({ primary_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.secondary_color || defaultConfig.secondary_color,
+                                set: (value) => {
+                                    window.elementSdk.config.secondary_color = value;
+                                    window.elementSdk.setConfig({ secondary_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.text_color || defaultConfig.text_color,
+                                set: (value) => {
+                                    window.elementSdk.config.text_color = value;
+                                    window.elementSdk.setConfig({ text_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.background_start || defaultConfig.background_start,
+                                set: (value) => {
+                                    window.elementSdk.config.background_start = value;
+                                    window.elementSdk.setConfig({ background_start: value });
+                                }
+                            },
+                            {
+                                get: () => config.background_end || defaultConfig.background_end,
+                                set: (value) => {
+                                    window.elementSdk.config.background_end = value;
+                                    window.elementSdk.setConfig({ background_end: value });
+                                }
+                            }
+                        ],
+                        borderables: [],
+                        fontEditable: undefined,
+                        fontSizeable: undefined
+                    }),
+                    mapToEditPanelValues: (config) => new Map([
+                        ["judul_sistem", config.judul_sistem || defaultConfig.judul_sistem],
+                        ["tahun_ajaran", config.tahun_ajaran || defaultConfig.tahun_ajaran],
+                        ["nama_sekolah", config.nama_sekolah || defaultConfig.nama_sekolah],
+                        ["subtitle", config.subtitle || defaultConfig.subtitle]
+                    ])
+                });
+            }
+        }
+
+        // NIS Auto-complete
+        document.getElementById('nis').addEventListener('input', function(e) {
+            const value = e.target.value;
+            const suggestions = document.getElementById('nis-suggestions');
+            
+            if (value.length < 2) {
+                suggestions.style.display = 'none';
+                return;
+            }
+
+            const matches = Object.keys(dataSiswa).filter(nis => 
+                nis.includes(value) || 
+                dataSiswa[nis].nama.toLowerCase().includes(value.toLowerCase())
+            );
+
+            if (matches.length > 0) {
+                suggestions.innerHTML = matches.map(nis => `
+                    <div style="padding: 12px; cursor: pointer; border-bottom: 1px solid #eee;"
+                         onclick="selectSiswa('${nis}')">
+                        <strong>${nis}</strong> - ${dataSiswa[nis].nama} (${dataSiswa[nis].kelas})
+                    </div>
+                `).join('');
+                suggestions.style.display = 'block';
+            } else {
+                suggestions.style.display = 'none';
+            }
+        });
+
+        function selectSiswa(nis) {
+            const siswa = dataSiswa[nis];
+            document.getElementById('nis').value = nis;
+            document.getElementById('nama').value = siswa.nama;
+            document.getElementById('kelas').value = siswa.kelas;
+            document.getElementById('kelas-display').value = siswa.kelas;
+            document.getElementById('nis-suggestions').style.display = 'none';
+        }
+
+        // Form submit
+        document.getElementById('input-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nis = document.getElementById('nis').value;
+            if (!dataSiswa[nis]) {
+                showToast('NIS tidak ditemukan dalam database', 'error');
+                return;
+            }
+
+            const checkboxes = document.querySelectorAll('.checkbox-item input[type="checkbox"]:checked');
+            if (checkboxes.length === 0) {
+                showToast('Pilih minimal satu jenis pelanggaran', 'error');
+                return;
+            }
+
+            if (currentRecordCount >= 999) {
+                showToast('Batas maksimal 999 data tercapai. Silakan hapus beberapa data terlebih dahulu.', 'error');
+                return;
+            }
+
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Menyimpan...';
+
+            const pelanggaran = Array.from(checkboxes).map(cb => cb.value).join(', ');
+            const now = new Date();
+
+            const formData = {
+                nis: nis,
+                nama: document.getElementById('nama').value,
+                kelas: document.getElementById('kelas').value,
+                pelanggaran: pelanggaran,
+                tanggal: now.toISOString().split('T')[0],
+                waktu: now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })
+            };
+
+            if (window.dataSdk) {
+                const result = await window.dataSdk.create(formData);
+                
+                if (result.isOk) {
+                    showToast('Data berhasil disimpan!', 'success');
+                    document.getElementById('input-form').reset();
+                    document.querySelectorAll('.checkbox-item input[type="checkbox"]').forEach(cb => cb.checked = false);
+                } else {
+                    showToast('Gagal menyimpan data. Silakan coba lagi.', 'error');
+                }
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = '     Simpan Data';
+        });
+
+        // Admin login
+        document.getElementById('admin-login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const password = document.getElementById('admin-password').value;
+            
+            if (password === ADMIN_PASSWORD) {
+                isAdminLoggedIn = true;
+                document.getElementById('admin-login-card').style.display = 'none';
+                document.getElementById('admin-content').style.display = 'block';
+                updateRekap();
+                updateAdminRekap();
+                showToast('Login berhasil!', 'success');
+            } else {
+                showToast('Password salah!', 'error');
+            }
+        });
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            document.getElementById('admin-login-card').style.display = 'block';
+            document.getElementById('admin-content').style.display = 'none';
+            document.getElementById('admin-password').value = '';
+            showToast('Anda telah keluar', 'success');
+        }
+
+        function switchTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            event.target.classList.add('active');
+
+            if (tabName === 'admin' && isAdminLoggedIn) {
+                updateRekap();
+                updateAdminRekap();
+            }
+        }
+
+        function switchAdminTab(tabName) {
+            const adminTabs = document.querySelectorAll('.admin-tab-content');
+            const adminButtons = document.querySelectorAll('.admin-tab-btn');
+            
+            adminTabs.forEach(tab => tab.classList.remove('active'));
+            adminButtons.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(`admin-${tabName}-content`).classList.add('active');
+            event.target.classList.add('active');
+
+            if (tabName === 'rekap-kelas') {
+                updateRekap();
+            } else if (tabName === 'rekap-nama') {
+                updateAdminRekap();
+            }
+        }
+
+
+
+        function updateRekap() {
+            const kelasFilter = document.getElementById('rekap-filter-kelas').value;
+            const now = new Date();
+            const oneMonthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+
+            let filtered = allRecords.filter(r => {
+                const recordDate = new Date(r.tanggal);
+                return recordDate >= oneMonthAgo;
+            });
+
+            if (kelasFilter) {
+                filtered = filtered.filter(r => r.kelas === kelasFilter);
+            }
+
+            const rekapMap = {};
+            filtered.forEach(record => {
+                const key = `${record.nis}_${record.nama}_${record.kelas}`;
+                if (!rekapMap[key]) {
+                    rekapMap[key] = {
+                        nis: record.nis,
+                        nama: record.nama,
+                        kelas: record.kelas,
+                        pelanggaranDetail: {}
+                    };
+                }
+                
+                // Hitung setiap jenis pelanggaran
+                const pelanggaranList = record.pelanggaran.split(', ');
+                pelanggaranList.forEach(p => {
+                    if (!rekapMap[key].pelanggaranDetail[p]) {
+                        rekapMap[key].pelanggaranDetail[p] = 0;
+                    }
+                    rekapMap[key].pelanggaranDetail[p]++;
+                });
+            });
+
+            const rekapArray = Object.values(rekapMap).map(item => {
+                const totalCount = Object.values(item.pelanggaranDetail).reduce((sum, count) => sum + count, 0);
+                return { ...item, totalCount };
+            }).sort((a, b) => b.totalCount - a.totalCount);
+
+            displayRekap(rekapArray, 'rekap-list');
+        }
+
+        function updateAdminRekap() {
+            const kelasFilter = document.getElementById('admin-filter-kelas').value;
+            const searchQuery = document.getElementById('admin-search').value.toLowerCase();
+
+            let filtered = [...allRecords];
+
+            if (kelasFilter) {
+                filtered = filtered.filter(r => r.kelas === kelasFilter);
+            }
+
+            if (searchQuery) {
+                filtered = filtered.filter(r => 
+                    r.nama.toLowerCase().includes(searchQuery) ||
+                    r.nis.includes(searchQuery)
+                );
+            }
+
+            const rekapMap = {};
+            filtered.forEach(record => {
+                const key = `${record.nis}_${record.nama}_${record.kelas}`;
+                if (!rekapMap[key]) {
+                    rekapMap[key] = {
+                        nis: record.nis,
+                        nama: record.nama,
+                        kelas: record.kelas,
+                        count: 0,
+                        records: []
+                    };
+                }
+                rekapMap[key].count++;
+                rekapMap[key].records.push(record);
+            });
+
+            const rekapArray = Object.values(rekapMap).sort((a, b) => b.count - a.count);
+            displayAdminRekap(rekapArray);
+        }
+
+        function displayRekap(rekap, containerId) {
+            const container = document.getElementById(containerId);
+            
+            if (rekap.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p>Belum ada data rekap untuk ditampilkan</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = rekap.map(item => {
+                const pelanggaranItems = Object.entries(item.pelanggaranDetail)
+                    .sort((a, b) => b[1] - a[1])
+                    .map(([jenis, jumlah]) => `
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: #f8f9fa; border-radius: 8px; margin-bottom: 8px;">
+                            <span style="color: #333; font-weight: 500;">${jenis}</span>
+                            <span style="background: linear-gradient(135deg, #1e3c72 0%, #7e22ce 100%); color: white; padding: 4px 12px; border-radius: 15px; font-weight: 600; font-size: 14px;">${jumlah}x</span>
+                        </div>
+                    `).join('');
+
+                return `
+                    <div class="rekap-item">
+                        <div class="rekap-header">
+                            <div>
+                                <div class="rekap-name">${item.nama}</div>
+                                <div class="rekap-kelas">NIS: ${item.nis} • Kelas ${item.kelas}</div>
+                            </div>
+                            <div class="rekap-count">${item.totalCount}x</div>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <strong style="color: #1e3c72; display: block; margin-bottom: 10px; font-size: 15px;">Detail Pelanggaran (1 Bulan Terakhir):</strong>
+                            ${pelanggaranItems}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function displayAdminRekap(rekap) {
+            const container = document.getElementById('admin-rekap-list');
+            
+            if (rekap.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p>Tidak ada data yang sesuai dengan filter</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = rekap.map(item => `
+                <div class="rekap-item">
+                    <div class="rekap-header">
+                        <div>
+                            <div class="rekap-name">${item.nama}</div>
+                            <div class="rekap-kelas">NIS: ${item.nis} • Kelas ${item.kelas}</div>
+                        </div>
+                        <div class="rekap-count">${item.count}x</div>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <strong style="color: #1e3c72; display: block; margin-bottom: 10px;">Detail Pelanggaran:</strong>
+                        ${item.records.map(r => `
+                            <div style="background: #f8f9fa; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+                                <div style="font-size: 13px; color: #666; margin-bottom: 5px;">
+                                    ${formatDate(r.tanggal)} • ${r.waktu}
+                                </div>
+                                <div class="pelanggaran-tags">
+                                    ${r.pelanggaran.split(', ').map(p => `<span class="pelanggaran-tag" style="font-size: 12px; padding: 4px 10px;">${p}</span>`).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            return date.toLocaleDateString('id-ID', options);
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = toast.querySelector('.toast-message');
+            
+            toast.className = `toast ${type}`;
+            toastMessage.textContent = message;
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3500);
+        }
+
+        function openHelp() {
+            document.getElementById('help-modal').style.display = 'block';
+        }
+
+        function closeHelp() {
+            document.getElementById('help-modal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('help-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        initializeApp();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0d46312357e793',t:'MTc2MzUyOTc5My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
